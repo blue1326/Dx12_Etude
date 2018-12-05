@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="00.Necessary">
+      <UniqueIdentifier>{0af9b506-758a-444a-a689-e6b654f1874c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00.Necessary\00.WinMain">
+      <UniqueIdentifier>{98e825da-53a1-4ff4-a29d-edcf8d46b2e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00.Necessary\01.Winapi">
+      <UniqueIdentifier>{0061cf9f-c2ec-46e1-9a19-098fecbfadae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00.Necessary\99.Headers">
+      <UniqueIdentifier>{bdc50337-b0e9-4dc6-88f0-7bf984ab7634}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Primary">
+      <UniqueIdentifier>{82d1b316-ffda-463a-84b7-71f2d7b0e0d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Primary\00.GeneralSetting">
+      <UniqueIdentifier>{a1efe241-5bbc-4fb2-bfd5-28bae08a106b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="99.enginesample">
+      <UniqueIdentifier>{39f1574e-8246-4e2b-bd2a-acb563bca378}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="99.enginesample\timer">
+      <UniqueIdentifier>{7ca0b572-d4ca-4c72-836f-484b54457fd0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="99.enginesample\Component">
+      <UniqueIdentifier>{88b8d9e9-9a8f-4e04-8b4b-6d1db5e5cb17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="99.enginesample\renderer">
+      <UniqueIdentifier>{d9ae1b08-76ad-46ef-9ab9-fd42896b38ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="99.enginesample\Scene">
+      <UniqueIdentifier>{0d2a1b4e-69e0-479f-9b48-ecc56d170da4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="99.enginesample\Gameobject">
+      <UniqueIdentifier>{457564d3-f634-4df6-9a56-091a00f6e7a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="98.Headers">
+      <UniqueIdentifier>{83d17049-592a-4100-b457-2d5501f77110}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="999.default">
+      <UniqueIdentifier>{cb2732f2-de8a-42ab-9141-17304f9042d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="999.default\헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="999.default\소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="999.default\리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\WINAPI\API_Setup.h">
+      <Filter>00.Necessary\01.Winapi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\stdHeaders.h">
+      <Filter>00.Necessary\99.Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code\GeneralSettings.h">
+      <Filter>01.Primary\00.GeneralSetting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code\Timer.h">
+      <Filter>99.enginesample\timer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code\Component.h">
+      <Filter>99.enginesample\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code\Renderer.h">
+      <Filter>99.enginesample\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code\Scene.h">
+      <Filter>99.enginesample\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code\GameObject.h">
+      <Filter>99.enginesample\Gameobject</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\dxException.h">
+      <Filter>98.Headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\WINAPI\API_Setup.cpp">
+      <Filter>00.Necessary\01.Winapi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\WINAPI\WinMain.cpp">
+      <Filter>00.Necessary\00.WinMain</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\GeneralSettings.cpp">
+      <Filter>01.Primary\00.GeneralSetting</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\Timer.cpp">
+      <Filter>99.enginesample\timer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\Component.cpp">
+      <Filter>99.enginesample\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\Renderer.cpp">
+      <Filter>99.enginesample\renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\Scene.cpp">
+      <Filter>99.enginesample\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\GameObject.cpp">
+      <Filter>99.enginesample\Gameobject</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Client.rc">
+      <Filter>999.default\리소스 파일</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="small.ico">
+      <Filter>999.default\리소스 파일</Filter>
+    </Image>
+    <Image Include="Client.ico">
+      <Filter>999.default\리소스 파일</Filter>
+    </Image>
+  </ItemGroup>
+</Project>
