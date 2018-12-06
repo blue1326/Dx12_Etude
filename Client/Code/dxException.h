@@ -1,5 +1,7 @@
 #ifndef dxException_h__
 #define dxException_h__
+#include "windowsHeaders.h"
+#include "STL.h"
 
 class DxException
 {

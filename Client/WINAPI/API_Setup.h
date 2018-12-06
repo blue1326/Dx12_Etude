@@ -2,10 +2,11 @@
 #define API_Setup_h__
 
 #include "stdHeaders.h"
-#include "GeneralSettings.h"
+
 class CApiSetUP
 {
 public:
+	CApiSetUP();
 	CApiSetUP(HINSTANCE hInstance);
 	CApiSetUP(const CApiSetUP& rhs) = delete;//복사생성자 삭제
 	CApiSetUP& operator=(const CApiSetUP& rhs) = delete;//대입연산자 삭제
@@ -15,24 +16,23 @@ public:
 	HINSTANCE	AppInst()const;
 	HWND		MainWnd()const;
 
-	int Run();
+	virtual int Run();
 
 	virtual bool Initialize();
 	virtual LRESULT MsgProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
-	void SetGeneralSettings(std::unique_ptr<CGeneralSettings> gs);
+	
 
-private:
-	void CalculateFrameStats();
-	virtual void CreateRtvAndDsvDescriptorHeaps();
+protected:
+	virtual void CalculateFrameStats();
 	virtual void OnResize();
 	
-private:
-	bool InitMainWindow();
+protected:
+	virtual bool InitMainWindow();
 
-private://변수
+protected://변수
 	static CApiSetUP* m_App;
-
+protected:
 	HINSTANCE m_hAppInst = nullptr; // application instance handle
 	HWND      m_hMainWnd = nullptr; // main window handle
 	bool      m_AppPaused = false;  // is the application paused?
@@ -44,7 +44,6 @@ private://변수
 	std::wstring m_MainWndCaption = L"d3d App";
 
 private://모든 권한은 얘가 가짐
-	std::unique_ptr<CGeneralSettings> m_GS = nullptr;
 };
 
 

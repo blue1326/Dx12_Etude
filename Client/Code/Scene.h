@@ -3,6 +3,8 @@
 #include "stdHeaders.h"
 #include "GameObject.h"
 
+class CTimer;
+
 class CScene
 {
 public:

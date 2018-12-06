@@ -1,11 +1,12 @@
 #ifndef Renderer_h__
 #define Renderer_h__
 #include "Component.h"
-
-#include "DefinedHeaders.h"
+#include "stdHeaders.h"
+//#include "DefinedHeaders.h"
 #include "DxDevice.h"
 //#include "UploadBuffer.h"
 #include "GameObject.h"
+#include "Timer.h"
 
 
 

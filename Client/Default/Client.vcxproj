@@ -20,7 +20,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{700F02D3-DCF1-4EC9-903D-3C38BE3F581D}</ProjectGuid>
+    <ProjectGuid>{CDDD694D-1376-488D-A9A6-890EBC9110ED}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Client</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
@@ -70,10 +70,10 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -82,20 +82,6 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
-      <Optimization>Disabled</Optimization>
-      <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>../Code;../Headers;../WINAPI;../../Microsoft;../../Generic;</AdditionalIncludeDirectories>
-    </ClCompile>
-    <Link>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
-      <SubSystem>Windows</SubSystem>
-    </Link>
-  </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -103,7 +89,21 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>../Code;../Headers;../WINAPI;../../Microsoft;../../Generic;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../Code; ../Headers; ../WinAPI; ../WinMain; ../../Generic; ../../Microsoft;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>../Code; ../Headers; ../WinAPI; ../WinMain; ../../Generic; ../../Microsoft;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -119,7 +119,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>../Code;../Headers;../WINAPI;../../Microsoft;../../Generic;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../Code; ../Headers; ../WinAPI; ../WinMain; ../../Generic; ../../Microsoft;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -137,7 +137,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>../Code;../Headers;../WINAPI;../../Microsoft;../../Generic;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../Code; ../Headers; ../WinAPI; ../WinMain; ../../Generic; ../../Microsoft;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -147,32 +147,38 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\Code\API_Derived.cpp" />
     <ClCompile Include="..\Code\Component.cpp" />
     <ClCompile Include="..\Code\DxDevice.cpp" />
+    <ClCompile Include="..\Code\dxException.cpp" />
     <ClCompile Include="..\Code\GameObject.cpp" />
     <ClCompile Include="..\Code\GeneralSettings.cpp" />
     <ClCompile Include="..\Code\Renderer.cpp" />
     <ClCompile Include="..\Code\Scene.cpp" />
     <ClCompile Include="..\Code\Timer.cpp" />
-    <ClCompile Include="..\WINAPI\API_Setup.cpp" />
-    <ClCompile Include="..\WINAPI\WinMain.cpp" />
-    <ClCompile Include="test.cpp" />
+    <ClCompile Include="..\WinAPI\API_Setup.cpp" />
+    <ClCompile Include="..\WinMain\WinMain.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Code\API_Derived.h" />
     <ClInclude Include="..\Code\Component.h" />
     <ClInclude Include="..\Code\DxDevice.h" />
+    <ClInclude Include="..\Code\dxException.h" />
     <ClInclude Include="..\Code\GameObject.h" />
     <ClInclude Include="..\Code\GeneralSettings.h" />
     <ClInclude Include="..\Code\Renderer.h" />
     <ClInclude Include="..\Code\Scene.h" />
     <ClInclude Include="..\Code\Timer.h" />
-    <ClInclude Include="..\Headers\Components.h" />
-    <ClInclude Include="..\Headers\DefinedHeaders.h" />
+    <ClInclude Include="..\Headers\d3dHeaders.h" />
     <ClInclude Include="..\Headers\GlobalVariables.h" />
+    <ClInclude Include="..\Headers\namespaces.h" />
     <ClInclude Include="..\Headers\stdHeaders.h" />
-    <ClInclude Include="..\Headers\Structs.h" />
-    <ClInclude Include="..\Headers\Templates.h" />
-    <ClInclude Include="..\WINAPI\API_Setup.h" />
+    <ClInclude Include="..\Headers\STL.h" />
+    <ClInclude Include="..\Headers\stream.h" />
+    <ClInclude Include="..\Headers\unknown.h" />
+    <ClInclude Include="..\Headers\Utilitys.h" />
+    <ClInclude Include="..\Headers\windowsHeaders.h" />
+    <ClInclude Include="..\WinAPI\API_Setup.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

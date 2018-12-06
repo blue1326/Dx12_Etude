@@ -1,6 +1,7 @@
 #ifndef Component_h__
 #define Component_h__
 #include "stdHeaders.h"
+class CTimer;
 class CComponent : public std::enable_shared_from_this<CComponent>
 {
 public:

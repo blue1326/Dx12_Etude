@@ -1,14 +1,14 @@
 #include "API_Setup.h"
-#include <windowsx.h>
 
 
-HWND g_hWnd;
-HINSTANCE g_hInst;
-int g_ClientWidth = 800;
-int g_ClientHeight = 600;
-bool g_DeviceInitState = false;
-XMMATRIX g_matView = XMMatrixIdentity();
-XMMATRIX g_matProj = XMMatrixIdentity();
+
+//HWND g_hWnd;
+//HINSTANCE g_hInst;
+//int g_ClientWidth = 800;
+//int g_ClientHeight = 600;
+//bool g_DeviceInitState = false;
+//XMMATRIX g_matView = XMMatrixIdentity();
+//XMMATRIX g_matProj = XMMatrixIdentity();
 
 CApiSetUP* CApiSetUP::m_App = nullptr; //static initalize
 
@@ -27,6 +27,11 @@ CApiSetUP::CApiSetUP(HINSTANCE hInstance)
 {
 	assert(m_App == nullptr); //running on debug state
 	m_App = this;
+}
+
+CApiSetUP::CApiSetUP()
+{
+
 }
 
 CApiSetUP::~CApiSetUP()
@@ -52,10 +57,10 @@ HWND CApiSetUP::MainWnd() const
 int CApiSetUP::Run()
 {
 	MSG msg = { 0 };
-	assert(m_GS != nullptr);
+	//assert(m_GS != nullptr);
 	//need timer
-	assert(m_GS->GetTimer(CGeneralSettings::AllTimer) != nullptr);
-	m_GS->TimerReset(CGeneralSettings::AllTimer);
+	//assert(m_GS->GetTimer(CGeneralSettings::AllTimer) != nullptr);
+	//m_GS->TimerReset(CGeneralSettings::AllTimer);
 	//message Loops
 	while (msg.message != WM_QUIT)
 	{
@@ -68,17 +73,17 @@ int CApiSetUP::Run()
 		//OtherWise aonther actions
 		else
 		{
-			m_GS->TimerTick(CGeneralSettings::AllTimer);
+			//m_GS->TimerTick(CGeneralSettings::AllTimer);
 			//timers tick
 
 			if (!m_AppPaused)
 			{
 				CalculateFrameStats();
-				m_GS->Update();
+				//m_GS->Update();
 				//Update();
-				m_GS->Render();
+				//m_GS->Render();
 				//Render();
-				m_GS->Late_Update();
+				//m_GS->Late_Update();
 
 			}
 			else
@@ -111,12 +116,12 @@ LRESULT CApiSetUP::MsgProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 		if (LOWORD(wParam) == WA_INACTIVE)
 		{
 			m_AppPaused = true;
-			m_GS->TimerStop(CGeneralSettings::AllTimer);
+			//m_GS->TimerStop(CGeneralSettings::AllTimer);
 		}
 		else
 		{
 			m_AppPaused = false;
-			m_GS->TimerStart(CGeneralSettings::AllTimer);
+			//m_GS->TimerStart(CGeneralSettings::AllTimer);
 		}
 		return 0;
 
@@ -127,64 +132,13 @@ LRESULT CApiSetUP::MsgProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 		g_ClientHeight = HIWORD(lParam);
 		/*m_ClientWidth = LOWORD(lParam);
 		m_ClientHeight = HIWORD(lParam);*/
-		if (g_DeviceInitState ==true)
-			//m_GS->GetDevice()->DeviceInitState() == true)
-		{
-			if (wParam == SIZE_MINIMIZED)
-			{
-				m_AppPaused = true;
-				m_Minimized = true;
-				m_Maximized = false;
-			}
-			else if (wParam == SIZE_MAXIMIZED)
-			{
-				m_AppPaused = false;
-				m_Minimized = false;
-				m_Maximized = true;
-				OnResize();
-			}
-			else if (wParam == SIZE_RESTORED)
-			{
-
-				// Restoring from minimized state?
-				if (m_Minimized)
-				{
-					m_AppPaused = false;
-					m_Minimized = false;
-					OnResize();
-				}
-
-				// Restoring from maximized state?
-				else if (m_Maximized)
-				{
-					m_AppPaused = false;
-					m_Maximized = false;
-					OnResize();
-				}
-				else if (m_Resizing)
-				{
-					// If user is dragging the resize bars, we do not resize 
-					// the buffers here because as the user continuously 
-					// drags the resize bars, a stream of WM_SIZE messages are
-					// sent to the window, and it would be pointless (and slow)
-					// to resize for each WM_SIZE message received from dragging
-					// the resize bars.  So instead, we reset after the user is 
-					// done resizing the window and releases the resize bars, which 
-					// sends a WM_EXITSIZEMOVE message.
-				}
-				else // API call such as SetWindowPos or mSwapChain->SetFullscreenState.
-				{
-					OnResize();
-				}
-			}
-		}
 		return 0;
 
 		// WM_EXITSIZEMOVE is sent when the user grabs the resize bars.
 	case WM_ENTERSIZEMOVE:
 		m_AppPaused = true;
 		m_Resizing = true;
-		m_GS->TimerStop(CGeneralSettings::AllTimer);
+		//m_GS->TimerStop(CGeneralSettings::AllTimer);
 		//mTimer.Stop();
 		return 0;
 
@@ -193,7 +147,7 @@ LRESULT CApiSetUP::MsgProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 	case WM_EXITSIZEMOVE:
 		m_AppPaused = false;
 		m_Resizing = false;
-		m_GS->TimerStart(CGeneralSettings::AllTimer);
+		//m_GS->TimerStart(CGeneralSettings::AllTimer);
 		//m_Timer.Start();
 		OnResize();
 		return 0;
@@ -229,24 +183,15 @@ LRESULT CApiSetUP::MsgProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 	return DefWindowProc(hwnd, msg, wParam, lParam);
 }
 
-void CApiSetUP::SetGeneralSettings(std::unique_ptr<CGeneralSettings> gs)
-{
-	m_GS = std::move(gs);
-}
 
 void CApiSetUP::CalculateFrameStats()
 {
-	m_GS->CalculateFrameStats(g_hWnd, m_MainWndCaption);
-}
-
-void CApiSetUP::CreateRtvAndDsvDescriptorHeaps()
-{
-
+	
 }
 
 void CApiSetUP::OnResize()
 {
-	m_GS->OnResize();
+	
 }
 
 bool CApiSetUP::InitMainWindow()

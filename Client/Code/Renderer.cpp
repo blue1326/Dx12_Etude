@@ -1,4 +1,5 @@
 #include "Renderer.h"
+#include "dxException.h"
 CRenderer::CRenderer(const std::shared_ptr<DxDevice> Device)
 	:m_DxDevice(Device),m_dxgiFactory(Device->GetDxgiFactory()),m_d3dDevice(Device->GetDevice())
 {

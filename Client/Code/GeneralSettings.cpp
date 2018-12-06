@@ -3,7 +3,7 @@
 //#include "Renderer.h"
 //#include "Transform.h"
 //#include "Camera.h"
-#include "Components.h"
+#include "Component.h"
 //#include "StageFirst.h"
 //#include "ComponentHolder.h"
 
@@ -12,6 +12,7 @@ CGeneralSettings::CGeneralSettings(const std::shared_ptr<DxDevice> Device, const
 {
 	m_Timer1->Reset();
 	m_Timer2->Reset();
+	g_DeviceInitState = true;
 }
 
 CGeneralSettings::~CGeneralSettings()
@@ -25,8 +26,8 @@ bool CGeneralSettings::InitGeneralSetting()
 		return false;
 	if (!InitComponents())
 		return false;
-	if (!InitScene())
-		return false;
+	/*if (!InitScene())
+		return false;*/
 	return true;
 }
 
@@ -83,12 +84,12 @@ bool CGeneralSettings::InitComponents()
 ///////////////////////////////////////////////////////////for Generic Method
 void CGeneralSettings::Update()
 {
-	m_Scene->Update_Scene(m_Timer2);
+	//m_Scene->Update_Scene(m_Timer2);
 }
 
 void CGeneralSettings::Late_Update()
 {
-	m_Scene->LastUpdate_Scene(m_Timer2);
+	//m_Scene->LastUpdate_Scene(m_Timer2);
 }
 
 void CGeneralSettings::Render()
@@ -124,7 +125,7 @@ void CGeneralSettings::Render()
 
 void CGeneralSettings::OnResize()
 {
-	m_Scene->OnResize();
+	//m_Scene->OnResize();
 	//((CRenderer*)CComponentHolder::GetInstance()->Get_Component("Renderer").get())->OnResize();
 }
 //////////////////////////////////////////////////////////for TimerMethod
