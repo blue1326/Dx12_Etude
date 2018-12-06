@@ -19,7 +19,7 @@ public:
 	virtual void Render_GameObject()=0;
 	//virtual void Render_GameObject_Depth(const CTimer& t)=0;
 	//void AddComponent(std::string ComponentTag,std::shared_ptr<CComponent> component);
-	void AddComponent(eCOMPONENTS comptag, std::shared_ptr<CComponent> component);
+	//void AddComponent(eCOMPONENTS comptag, std::shared_ptr<CComponent> component);
 	void OnResize();
 protected:
 	inline shared_ptr<CGameObject> SetRenderer()
@@ -32,7 +32,7 @@ protected:
 protected:
 	//typedef std::map<std::string, std::shared_ptr<CComponent>> COMPONENT;//아마도 삭제
 	//COMPONENT m_Components;
-	std::array<std::shared_ptr<CComponent>, COMPCNT> m_ComponentArr;
+	//std::array<std::shared_ptr<CComponent>, COMPCNT> m_ComponentArr;
 };
 
 

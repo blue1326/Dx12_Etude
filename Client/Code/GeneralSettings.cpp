@@ -4,8 +4,8 @@
 //#include "Transform.h"
 //#include "Camera.h"
 #include "Components.h"
-#include "StageFirst.h"
-#include "ComponentHolder.h"
+//#include "StageFirst.h"
+//#include "ComponentHolder.h"
 
 CGeneralSettings::CGeneralSettings(const std::shared_ptr<DxDevice> Device, const std::shared_ptr<CTimer> Timer1, const std::shared_ptr<CTimer> Timer2)
 	: m_DxDevice(Device), m_Timer1(move(Timer1)), m_Timer2(move(Timer2))
@@ -32,30 +32,32 @@ bool CGeneralSettings::InitGeneralSetting()
 
 bool CGeneralSettings::InitScene()
 {
-	m_Scene = std::shared_ptr<CScene>(new CStageFirst);
+	/*m_Scene = std::shared_ptr<CScene>(new CStageFirst);
 	if (!m_Scene->Ready_Scene())
 		return false;
-	m_Scene->SetActiveState(true);
+	m_Scene->SetActiveState(true);*/
 	return true;
 }
 
 bool CGeneralSettings::InitComponents()
 {
-	CComponentHolder::GetInstance()->Reserve_ComponentHolder(20);
+	//CComponentHolder::GetInstance()->Reserve_ComponentHolder(20);
 
-	std::shared_ptr<CComponent> inst = std::shared_ptr<CComponent>(new CRenderer(m_DxDevice));
-	CComponentHolder::GetInstance()->AddOriginComponent("Renderer", inst);
-	inst.reset(new CTransform(m_DxDevice->GetDevice()));
-	CComponentHolder::GetInstance()->AddOriginComponent("Transform", inst);
-	//m_DxDevice->GetDevice()
-	inst.reset(new CCamera(m_DxDevice->GetDevice()));
-	CComponentHolder::GetInstance()->AddOriginComponent("Camera", inst);
-	inst.reset(new CLand(m_DxDevice->GetDevice()));
-	CComponentHolder::GetInstance()->AddOriginComponent("Land", inst);
-	inst.reset(new CWave(m_DxDevice->GetDevice(),m_DxDevice->GetDxgiFactory()));
-	CComponentHolder::GetInstance()->AddOriginComponent("Wave", inst);
-	if (!CComponentHolder::GetInstance()->InitComponents())
-		return false;
+	//std::shared_ptr<CComponent> inst = std::shared_ptr<CComponent>(new CRenderer(m_DxDevice));
+	//CComponentHolder::GetInstance()->AddOriginComponent("Renderer", inst);
+	//inst.reset(new CTransform(m_DxDevice->GetDevice()));
+	//CComponentHolder::GetInstance()->AddOriginComponent("Transform", inst);
+	////m_DxDevice->GetDevice()
+	//inst.reset(new CCamera(m_DxDevice->GetDevice()));
+	//CComponentHolder::GetInstance()->AddOriginComponent("Camera", inst);
+	//inst.reset(new CLand(m_DxDevice->GetDevice()));
+	//CComponentHolder::GetInstance()->AddOriginComponent("Land", inst);
+	//inst.reset(new CWave(m_DxDevice->GetDevice(),m_DxDevice->GetDxgiFactory()));
+	//CComponentHolder::GetInstance()->AddOriginComponent("Wave", inst);
+	//if (!CComponentHolder::GetInstance()->InitComponents())
+	//	return false;
+
+
 	//m_OriginalComponents.insert(OC::value_type("Renderer", inst));
 	//m_OriginalRenderer = inst;
 	//
@@ -93,8 +95,12 @@ void CGeneralSettings::Render()
 {
 
 	
-	((CRenderer*)(CComponentHolder::GetInstance()->Get_Component("Renderer").get()))->Render_GameObject();
+	//((CRenderer*)(CComponentHolder::GetInstance()->Get_Component("Renderer").get()))->Render_GameObject();
 	
+
+
+
+
 	//m_Scene->Render_Scene(m_Timer2);
 	//it is test code
 	 /*OC::iterator iter = m_OriginalComponents.find("Renderer");

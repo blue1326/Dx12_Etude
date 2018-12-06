@@ -90,7 +90,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>./;../Code;../WINAPI;../Headers;../../Microsoft;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./;../Code;../WINAPI;../Headers;../../Microsoft;../../GenericUse</AdditionalIncludeDirectories>
       <AdditionalOptions>/Y- %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
@@ -106,7 +106,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>./;../Code;../WINAPI;../Headers;../../Microsoft;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./;../Code;../WINAPI;../Headers;../../Microsoft;../../GenericUse</AdditionalIncludeDirectories>
       <AdditionalOptions>/Y- %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
@@ -124,7 +124,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>./;../Code;../WINAPI;../Headers;../../Microsoft;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./;../Code;../WINAPI;../Headers;../../Microsoft;../../GenericUse</AdditionalIncludeDirectories>
       <AdditionalOptions>/Y- %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
@@ -144,7 +144,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>./;../Code;../WINAPI;../Headers;../../Microsoft;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./;../Code;../WINAPI;../Headers;../../Microsoft;../../GenericUse</AdditionalIncludeDirectories>
       <AdditionalOptions>/Y- %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
@@ -156,17 +156,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\Code\Component.h" />
+    <ClInclude Include="..\Code\DxDevice.h" />
     <ClInclude Include="..\Code\GameObject.h" />
     <ClInclude Include="..\Code\GeneralSettings.h" />
     <ClInclude Include="..\Code\Renderer.h" />
     <ClInclude Include="..\Code\Scene.h" />
     <ClInclude Include="..\Code\Timer.h" />
-    <ClInclude Include="..\Headers\dxException.h" />
+    <ClInclude Include="..\Headers\GlobalVariables.h" />
     <ClInclude Include="..\Headers\stdHeaders.h" />
     <ClInclude Include="..\WINAPI\API_Setup.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Code\Component.cpp" />
+    <ClCompile Include="..\Code\DxDevice.cpp" />
     <ClCompile Include="..\Code\GameObject.cpp" />
     <ClCompile Include="..\Code\GeneralSettings.cpp" />
     <ClCompile Include="..\Code\Renderer.cpp" />
@@ -174,13 +176,6 @@
     <ClCompile Include="..\Code\Timer.cpp" />
     <ClCompile Include="..\WINAPI\API_Setup.cpp" />
     <ClCompile Include="..\WINAPI\WinMain.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="Client.rc" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="Client.ico" />
-    <Image Include="small.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

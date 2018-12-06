@@ -20,6 +20,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01.DDS_Texture", "01.DDS_Te
 		Microsoft\DDSTextureLoader.h = Microsoft\DDSTextureLoader.h
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "98.GenericUse", "98.GenericUse", "{CB343599-B389-4665-BE36-91CC6D29BFA2}"
+	ProjectSection(SolutionItems) = preProject
+		GenericUse\dxException.cpp = GenericUse\dxException.cpp
+		GenericUse\dxException.h = GenericUse\dxException.h
+		GenericUse\Macro.h = GenericUse\Macro.h
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64

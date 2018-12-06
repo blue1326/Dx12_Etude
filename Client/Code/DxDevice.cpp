@@ -1,5 +1,6 @@
 #include "DxDevice.h"
 #include <windowsx.h>
+
 DxDevice::DxDevice()
 {
 

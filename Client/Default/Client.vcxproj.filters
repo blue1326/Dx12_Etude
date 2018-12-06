@@ -43,17 +43,8 @@
     <Filter Include="999.default">
       <UniqueIdentifier>{cb2732f2-de8a-42ab-9141-17304f9042d2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="999.default\헤더 파일">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="999.default\소스 파일">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="999.default\리소스 파일">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    <Filter Include="99.enginesample\device">
+      <UniqueIdentifier>{70bc6a4a-7c8d-490b-a1f6-5bcf4284fc3a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -81,8 +72,11 @@
     <ClInclude Include="..\Code\GameObject.h">
       <Filter>99.enginesample\Gameobject</Filter>
     </ClInclude>
-    <ClInclude Include="..\Headers\dxException.h">
+    <ClInclude Include="..\Headers\GlobalVariables.h">
       <Filter>98.Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code\DxDevice.h">
+      <Filter>99.enginesample\device</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -110,18 +104,8 @@
     <ClCompile Include="..\Code\GameObject.cpp">
       <Filter>99.enginesample\Gameobject</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="Client.rc">
-      <Filter>999.default\리소스 파일</Filter>
-    </ResourceCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="small.ico">
-      <Filter>999.default\리소스 파일</Filter>
-    </Image>
-    <Image Include="Client.ico">
-      <Filter>999.default\리소스 파일</Filter>
-    </Image>
+    <ClCompile Include="..\Code\DxDevice.cpp">
+      <Filter>99.enginesample\device</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

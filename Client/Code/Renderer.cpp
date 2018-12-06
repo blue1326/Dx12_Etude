@@ -508,8 +508,8 @@ void CRenderer::BuildShadersAndInputLayout()
 
 void CRenderer::BuildShader_LandWave()
 {
-	m_Shaders["standardVS"] = d3dUtil::CompileShader(L"../Shaders/color_LandWave.hlsl", nullptr, "VS", "vs_5_0");
-	m_Shaders["opaquePS"] = d3dUtil::CompileShader(L"../Shaders/color_LandWave.hlsl", nullptr, "PS", "ps_5_0");
+//	m_Shaders["standardVS"] = d3dUtil::CompileShader(L"../Shaders/color_LandWave.hlsl", nullptr, "VS", "vs_5_0");
+//	m_Shaders["opaquePS"] = d3dUtil::CompileShader(L"../Shaders/color_LandWave.hlsl", nullptr, "PS", "ps_5_0");
 }
 
 void CRenderer::BuildInputLayout_LandWave()

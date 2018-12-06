@@ -31,15 +31,30 @@
 
 //??
 #include <cstdint>
-
 #include <cassert>
 #include <ppl.h>
 
+
+//utility
+#include "Timer.h"
+#include "Macro.h"
+#include "dxException.h"
 
 //necessary d3d12 libs
 #pragma comment(lib,"d3dcompiler.lib")
 #pragma comment(lib, "D3D12.lib")
 #pragma comment(lib, "dxgi.lib")
+
+
+
+//GlobalVariables
+#include "GlobalVariables.h"
+
+//namespace
+using namespace std;
+using Microsoft::WRL::ComPtr;
+using namespace DirectX;
+using namespace DirectX::PackedVector;
 
 
 
