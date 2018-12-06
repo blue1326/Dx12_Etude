@@ -8,15 +8,17 @@
 #define _CRTDBG_MAP_ALLOC
 #include <crtdbg.h>
 #endif
-
+// Link necessary d3d12 libraries.
+#pragma comment(lib,"d3dcompiler.lib")
+#pragma comment(lib, "D3D12.lib")
+#pragma comment(lib, "dxgi.lib")
 
 #pragma comment(linker, "/entry:WinMainCRTStartup /subsystem:console")
-
-
-
 //
-//int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE prevInstance,
-//	PSTR cmdLine, int showCmd)
+//int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
+//	_In_opt_ HINSTANCE hPrevInstance,
+//	_In_ LPWSTR    lpCmdLine,
+//	_In_ int       nCmdShow)
 //{
 //	// Enable run-time memory check for debug builds.
 //#if defined(DEBUG) | defined(_DEBUG)
@@ -45,10 +47,9 @@
 //	}
 //}
 
-int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
-	_In_opt_ HINSTANCE hPrevInstance,
-	_In_ LPWSTR    lpCmdLine,
-	_In_ int       nCmdShow)
+
+int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE prevInstance,
+	PSTR cmdLine, int showCmd)
 {
 	// Enable run-time memory check for debug builds.
 #if defined(DEBUG) | defined(_DEBUG)

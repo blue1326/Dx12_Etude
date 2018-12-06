@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Client", "Client\Default\Client.vcxproj", "{63D299AB-053B-49F8-A77F-3D184158DAE2}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00.Client", "00.Client", "{4089E111-7E14-447A-A367-C2AFC68D7D97}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "99.Microsoft", "99.Microsoft", "{1FDAB5EF-FD68-46D4-B234-82731FB79774}"
@@ -20,31 +18,39 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01.DDS_Texture", "01.DDS_Te
 		Microsoft\DDSTextureLoader.h = Microsoft\DDSTextureLoader.h
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "98.GenericUse", "98.GenericUse", "{CB343599-B389-4665-BE36-91CC6D29BFA2}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "98.Generic", "98.Generic", "{CB343599-B389-4665-BE36-91CC6D29BFA2}"
 	ProjectSection(SolutionItems) = preProject
-		GenericUse\dxException.cpp = GenericUse\dxException.cpp
-		GenericUse\dxException.h = GenericUse\dxException.h
-		GenericUse\Macro.h = GenericUse\Macro.h
+		Generic\dxException.cpp = Generic\dxException.cpp
+		Generic\dxException.h = Generic\dxException.h
+		Generic\Macro.h = Generic\Macro.h
 	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Client", "Client\Default\Client.vcxproj", "{700F02D3-DCF1-4EC9-903D-3C38BE3F581D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
 		Release|x64 = Release|x64
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{63D299AB-053B-49F8-A77F-3D184158DAE2}.Debug|x64.ActiveCfg = Debug|x64
-		{63D299AB-053B-49F8-A77F-3D184158DAE2}.Debug|x64.Build.0 = Debug|x64
-		{63D299AB-053B-49F8-A77F-3D184158DAE2}.Release|x64.ActiveCfg = Release|x64
-		{63D299AB-053B-49F8-A77F-3D184158DAE2}.Release|x64.Build.0 = Release|x64
+		{700F02D3-DCF1-4EC9-903D-3C38BE3F581D}.Debug|x64.ActiveCfg = Debug|x64
+		{700F02D3-DCF1-4EC9-903D-3C38BE3F581D}.Debug|x64.Build.0 = Debug|x64
+		{700F02D3-DCF1-4EC9-903D-3C38BE3F581D}.Debug|x86.ActiveCfg = Debug|Win32
+		{700F02D3-DCF1-4EC9-903D-3C38BE3F581D}.Debug|x86.Build.0 = Debug|Win32
+		{700F02D3-DCF1-4EC9-903D-3C38BE3F581D}.Release|x64.ActiveCfg = Release|x64
+		{700F02D3-DCF1-4EC9-903D-3C38BE3F581D}.Release|x64.Build.0 = Release|x64
+		{700F02D3-DCF1-4EC9-903D-3C38BE3F581D}.Release|x86.ActiveCfg = Release|Win32
+		{700F02D3-DCF1-4EC9-903D-3C38BE3F581D}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{63D299AB-053B-49F8-A77F-3D184158DAE2} = {4089E111-7E14-447A-A367-C2AFC68D7D97}
 		{77AB6D61-07A9-4482-A994-4446BEB1873B} = {1FDAB5EF-FD68-46D4-B234-82731FB79774}
 		{02D0E1DF-8E6A-4687-954A-74102B2F2476} = {1FDAB5EF-FD68-46D4-B234-82731FB79774}
+		{700F02D3-DCF1-4EC9-903D-3C38BE3F581D} = {4089E111-7E14-447A-A367-C2AFC68D7D97}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2B18DC20-BFEA-475D-8F19-36D25F8216F4}

@@ -20,7 +20,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{63D299AB-053B-49F8-A77F-3D184158DAE2}</ProjectGuid>
+    <ProjectGuid>{700F02D3-DCF1-4EC9-903D-3C38BE3F581D}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Client</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
@@ -84,39 +84,34 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>./;../Code;../WINAPI;../Headers;../../Microsoft;../../GenericUse</AdditionalIncludeDirectories>
-      <AdditionalOptions>/Y- %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>../Code;../Headers;../WINAPI;../../Microsoft;../../Generic;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>./;../Code;../WINAPI;../Headers;../../Microsoft;../../GenericUse</AdditionalIncludeDirectories>
-      <AdditionalOptions>/Y- %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>../Code;../Headers;../WINAPI;../../Microsoft;../../Generic;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -124,19 +119,17 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>./;../Code;../WINAPI;../Headers;../../Microsoft;../../GenericUse</AdditionalIncludeDirectories>
-      <AdditionalOptions>/Y- %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>../Code;../Headers;../WINAPI;../../Microsoft;../../Generic;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -144,28 +137,15 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>./;../Code;../WINAPI;../Headers;../../Microsoft;../../GenericUse</AdditionalIncludeDirectories>
-      <AdditionalOptions>/Y- %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>../Code;../Headers;../WINAPI;../../Microsoft;../../Generic;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClInclude Include="..\Code\Component.h" />
-    <ClInclude Include="..\Code\DxDevice.h" />
-    <ClInclude Include="..\Code\GameObject.h" />
-    <ClInclude Include="..\Code\GeneralSettings.h" />
-    <ClInclude Include="..\Code\Renderer.h" />
-    <ClInclude Include="..\Code\Scene.h" />
-    <ClInclude Include="..\Code\Timer.h" />
-    <ClInclude Include="..\Headers\GlobalVariables.h" />
-    <ClInclude Include="..\Headers\stdHeaders.h" />
-    <ClInclude Include="..\WINAPI\API_Setup.h" />
-  </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Code\Component.cpp" />
     <ClCompile Include="..\Code\DxDevice.cpp" />
@@ -176,6 +156,23 @@
     <ClCompile Include="..\Code\Timer.cpp" />
     <ClCompile Include="..\WINAPI\API_Setup.cpp" />
     <ClCompile Include="..\WINAPI\WinMain.cpp" />
+    <ClCompile Include="test.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Code\Component.h" />
+    <ClInclude Include="..\Code\DxDevice.h" />
+    <ClInclude Include="..\Code\GameObject.h" />
+    <ClInclude Include="..\Code\GeneralSettings.h" />
+    <ClInclude Include="..\Code\Renderer.h" />
+    <ClInclude Include="..\Code\Scene.h" />
+    <ClInclude Include="..\Code\Timer.h" />
+    <ClInclude Include="..\Headers\Components.h" />
+    <ClInclude Include="..\Headers\DefinedHeaders.h" />
+    <ClInclude Include="..\Headers\GlobalVariables.h" />
+    <ClInclude Include="..\Headers\stdHeaders.h" />
+    <ClInclude Include="..\Headers\Structs.h" />
+    <ClInclude Include="..\Headers\Templates.h" />
+    <ClInclude Include="..\WINAPI\API_Setup.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
