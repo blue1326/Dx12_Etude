@@ -10,7 +10,11 @@
 #include "Macro.h"
 #include "GlobalVariables.h"
 
+#include "Functor.h"
+
 #include "namespaces.h"
+
+
 
 //necessary d3d12 libs
 #pragma comment(lib,"d3dcompiler.lib")

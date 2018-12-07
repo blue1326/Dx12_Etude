@@ -10,7 +10,7 @@ public:
 	DxDevice();
 	~DxDevice();
 public:
-	bool InitDxDevice();
+	HRESULT InitDxDevice();
 	bool DeviceInitState();
 	void SetDeviceInitState(bool isready);
 
@@ -28,7 +28,7 @@ public:
 	void LogOutputDisplayModes(IDXGIOutput* output, DXGI_FORMAT format);
 
 private:
-	bool InitDirect3D();
+	HRESULT InitDirect3D();
 
 	
 	

@@ -9,6 +9,12 @@ CGameObject::~CGameObject()
 {
 
 }
+
+void CGameObject::Free(void)
+{
+
+}
+
 //
 //void CGameObject::AddComponent(std::string ComponentTag, std::shared_ptr<CComponent> component)
 //{
@@ -28,12 +34,5 @@ CGameObject::~CGameObject()
 //	}
 //}
 
-void CGameObject::OnResize()
-{
-	/*for (const auto &j : m_ComponentArr)
-	{
-		if (j)
-		j->OnResize();
-	}*/
-}
+
 

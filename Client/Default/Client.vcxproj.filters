@@ -37,6 +37,12 @@
     <Filter Include="00.for Windows\WinApi_Derived">
       <UniqueIdentifier>{4ca188d7-17f4-434f-886b-90a554aa1d0a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02.toClient">
+      <UniqueIdentifier>{9ca4d53c-535b-4eb3-840c-ff47ad87b28b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.ToEngine\00.Utility">
+      <UniqueIdentifier>{0144700f-9830-4704-96ef-2b2d112431a9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\WinAPI\API_Setup.cpp">
@@ -45,32 +51,41 @@
     <ClCompile Include="..\WinMain\WinMain.cpp">
       <Filter>00.for Windows\WinMain</Filter>
     </ClCompile>
-    <ClCompile Include="..\Code\Timer.cpp">
-      <Filter>01.ToEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Code\dxException.cpp">
-      <Filter>01.ToEngine</Filter>
-    </ClCompile>
     <ClCompile Include="..\Code\API_Derived.cpp">
       <Filter>00.for Windows\WinApi_Derived</Filter>
     </ClCompile>
+    <ClCompile Include="..\Code_Engine\Renderer.cpp">
+      <Filter>01.ToEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code_Engine\Scene.cpp">
+      <Filter>01.ToEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code_Engine\Component.cpp">
+      <Filter>01.ToEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code_Engine\DxDevice.cpp">
+      <Filter>01.ToEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code_Engine\GameObject.cpp">
+      <Filter>01.ToEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code_Engine\Layer.cpp">
+      <Filter>01.ToEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code_Engine\dxException.cpp">
+      <Filter>01.ToEngine\00.Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code_Engine\Timer.cpp">
+      <Filter>01.ToEngine\00.Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code_Engine\ShaderCompiler.cpp">
+      <Filter>01.ToEngine\00.Utility</Filter>
+    </ClCompile>
     <ClCompile Include="..\Code\GeneralSettings.cpp">
-      <Filter>01.ToEngine</Filter>
+      <Filter>02.toClient</Filter>
     </ClCompile>
-    <ClCompile Include="..\Code\Renderer.cpp">
-      <Filter>01.ToEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Code\Scene.cpp">
-      <Filter>01.ToEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Code\Component.cpp">
-      <Filter>01.ToEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Code\DxDevice.cpp">
-      <Filter>01.ToEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Code\GameObject.cpp">
-      <Filter>01.ToEngine</Filter>
+    <ClCompile Include="..\Code\testScene.cpp">
+      <Filter>02.toClient</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -101,35 +116,47 @@
     <ClInclude Include="..\Headers\Utilitys.h">
       <Filter>99.Headers\00.separated_header</Filter>
     </ClInclude>
-    <ClInclude Include="..\Code\Timer.h">
-      <Filter>01.ToEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Code\dxException.h">
-      <Filter>01.ToEngine</Filter>
-    </ClInclude>
     <ClInclude Include="..\Headers\GlobalVariables.h">
       <Filter>99.Headers\00.separated_header</Filter>
     </ClInclude>
     <ClInclude Include="..\Code\API_Derived.h">
       <Filter>00.for Windows\WinApi_Derived</Filter>
     </ClInclude>
+    <ClInclude Include="..\Headers\Functor.h">
+      <Filter>99.Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code_Engine\Renderer.h">
+      <Filter>01.ToEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code_Engine\Scene.h">
+      <Filter>01.ToEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code_Engine\Component.h">
+      <Filter>01.ToEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code_Engine\DxDevice.h">
+      <Filter>01.ToEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code_Engine\GameObject.h">
+      <Filter>01.ToEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code_Engine\Layer.h">
+      <Filter>01.ToEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code_Engine\dxException.h">
+      <Filter>01.ToEngine\00.Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code_Engine\Timer.h">
+      <Filter>01.ToEngine\00.Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code_Engine\ShaderCompiler.h">
+      <Filter>01.ToEngine\00.Utility</Filter>
+    </ClInclude>
     <ClInclude Include="..\Code\GeneralSettings.h">
-      <Filter>01.ToEngine</Filter>
+      <Filter>02.toClient</Filter>
     </ClInclude>
-    <ClInclude Include="..\Code\Component.h">
-      <Filter>01.ToEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Code\Renderer.h">
-      <Filter>01.ToEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Code\Scene.h">
-      <Filter>01.ToEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Code\DxDevice.h">
-      <Filter>01.ToEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Code\GameObject.h">
-      <Filter>01.ToEngine</Filter>
+    <ClInclude Include="..\Code\testScene.h">
+      <Filter>02.toClient</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

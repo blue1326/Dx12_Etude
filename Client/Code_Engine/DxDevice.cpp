@@ -10,19 +10,19 @@ DxDevice::~DxDevice()
 {
 }
 
-bool DxDevice::InitDxDevice()
+HRESULT DxDevice::InitDxDevice()
 {
 
-	/*if (!InitDirect3D())
-		return false;
-*/
+	if (FAILED(InitDirect3D()))
+		return E_FAIL;
 
 
-	return true;
+
+	return S_OK;
 }
 
 
-bool DxDevice::InitDirect3D()
+HRESULT DxDevice::InitDirect3D()
 {
 #if defined(DEBUG) || defined(_DEBUG) 
 	// Enable the D3D12 debug layer.
@@ -54,7 +54,7 @@ bool DxDevice::InitDirect3D()
 	}
 	////////////device and factory
 
-	return true;
+	return S_OK;
 }
 
 
