@@ -14,9 +14,9 @@ public:
 	~CGeneralSettings();
 public:
 	bool InitGeneralSetting();
-	bool InitScene();
+	HRESULT InitScene();
 	void Update();
-	void Late_Update();
+	void Last_Update();
 	void Render();
 	//void SetClientSize(int width, int height);//юс╫ц
 	void OnResize();
@@ -31,9 +31,9 @@ public: //for frame Count
 	void CalculateFrameStats(const HWND& mainWnd, std::wstring caption);
 public: //for DxDevice method
 	std::shared_ptr<DxDevice> GetDevice();
-	bool InitDxDevice();
+	HRESULT InitDxDevice();
 private://for components
-	bool InitComponents();
+	HRESULT InitComponents();
 private:
 	const std::shared_ptr<CTimer> m_Timer1 = nullptr;
 	const std::shared_ptr<CTimer> m_Timer2 = nullptr;

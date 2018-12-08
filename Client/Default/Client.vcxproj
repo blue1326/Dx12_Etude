@@ -89,7 +89,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>../Code; ../Headers; ../WinAPI; ../WinMain; ../../Generic; ../../Microsoft;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../Code;../Code_Engine; ../Headers; ../WinAPI; ../WinMain; ../../Generic; ../../Microsoft;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -103,7 +103,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>../Code; ../Headers; ../WinAPI; ../WinMain; ../../Generic; ../../Microsoft;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../Code;../Code_Engine; ../Headers; ../WinAPI; ../WinMain; ../../Generic; ../../Microsoft;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -119,7 +119,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>../Code; ../Headers; ../WinAPI; ../WinMain; ../../Generic; ../../Microsoft;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../Code;../Code_Engine; ../Headers; ../WinAPI; ../WinMain; ../../Generic; ../../Microsoft;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -137,7 +137,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>../Code; ../Headers; ../WinAPI; ../WinMain; ../../Generic; ../../Microsoft;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../Code;../Code_Engine; ../Headers; ../WinAPI; ../WinMain; ../../Generic; ../../Microsoft;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -148,28 +148,35 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\Code\API_Derived.cpp" />
-    <ClCompile Include="..\Code\Component.cpp" />
-    <ClCompile Include="..\Code\DxDevice.cpp" />
-    <ClCompile Include="..\Code\dxException.cpp" />
-    <ClCompile Include="..\Code\GameObject.cpp" />
     <ClCompile Include="..\Code\GeneralSettings.cpp" />
-    <ClCompile Include="..\Code\Renderer.cpp" />
-    <ClCompile Include="..\Code\Scene.cpp" />
-    <ClCompile Include="..\Code\Timer.cpp" />
+    <ClCompile Include="..\Code\testScene.cpp" />
+    <ClCompile Include="..\Code_Engine\Component.cpp" />
+    <ClCompile Include="..\Code_Engine\DxDevice.cpp" />
+    <ClCompile Include="..\Code_Engine\dxException.cpp" />
+    <ClCompile Include="..\Code_Engine\GameObject.cpp" />
+    <ClCompile Include="..\Code_Engine\Layer.cpp" />
+    <ClCompile Include="..\Code_Engine\Renderer.cpp" />
+    <ClCompile Include="..\Code_Engine\Scene.cpp" />
+    <ClCompile Include="..\Code_Engine\ShaderCompiler.cpp" />
+    <ClCompile Include="..\Code_Engine\Timer.cpp" />
     <ClCompile Include="..\WinAPI\API_Setup.cpp" />
     <ClCompile Include="..\WinMain\WinMain.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Code\API_Derived.h" />
-    <ClInclude Include="..\Code\Component.h" />
-    <ClInclude Include="..\Code\DxDevice.h" />
-    <ClInclude Include="..\Code\dxException.h" />
-    <ClInclude Include="..\Code\GameObject.h" />
     <ClInclude Include="..\Code\GeneralSettings.h" />
-    <ClInclude Include="..\Code\Renderer.h" />
-    <ClInclude Include="..\Code\Scene.h" />
-    <ClInclude Include="..\Code\Timer.h" />
+    <ClInclude Include="..\Code\testScene.h" />
+    <ClInclude Include="..\Code_Engine\Component.h" />
+    <ClInclude Include="..\Code_Engine\DxDevice.h" />
+    <ClInclude Include="..\Code_Engine\dxException.h" />
+    <ClInclude Include="..\Code_Engine\GameObject.h" />
+    <ClInclude Include="..\Code_Engine\Layer.h" />
+    <ClInclude Include="..\Code_Engine\Renderer.h" />
+    <ClInclude Include="..\Code_Engine\Scene.h" />
+    <ClInclude Include="..\Code_Engine\ShaderCompiler.h" />
+    <ClInclude Include="..\Code_Engine\Timer.h" />
     <ClInclude Include="..\Headers\d3dHeaders.h" />
+    <ClInclude Include="..\Headers\Functor.h" />
     <ClInclude Include="..\Headers\GlobalVariables.h" />
     <ClInclude Include="..\Headers\namespaces.h" />
     <ClInclude Include="..\Headers\stdHeaders.h" />

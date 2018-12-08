@@ -74,7 +74,7 @@ int CApiSetUP_Derived::Run()
 				//Update();
 				m_GS->Render();
 				//Render();
-				m_GS->Late_Update();
+				m_GS->Last_Update();
 
 			}
 			else
@@ -90,7 +90,8 @@ bool CApiSetUP_Derived::Initialize()
 {
 	if (!InitMainWindow())
 		return false;
-	//if()
+	if (!m_GS->InitGeneralSetting())
+		return false;
 	OnResize();
 
 	return true;

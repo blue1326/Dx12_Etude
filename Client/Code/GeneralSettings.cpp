@@ -6,13 +6,13 @@
 #include "Component.h"
 //#include "StageFirst.h"
 //#include "ComponentHolder.h"
+#include "testScene.h"
 
 CGeneralSettings::CGeneralSettings(const std::shared_ptr<DxDevice> Device, const std::shared_ptr<CTimer> Timer1, const std::shared_ptr<CTimer> Timer2)
 	: m_DxDevice(Device), m_Timer1(move(Timer1)), m_Timer2(move(Timer2))
 {
 	m_Timer1->Reset();
 	m_Timer2->Reset();
-	g_DeviceInitState = true;
 }
 
 CGeneralSettings::~CGeneralSettings()
@@ -22,25 +22,31 @@ CGeneralSettings::~CGeneralSettings()
 
 bool CGeneralSettings::InitGeneralSetting()
 {
-	if (!InitDxDevice())
+	if (FAILED(InitDxDevice()))
 		return false;
-	if (!InitComponents())
+	g_DeviceInitState = true;
+	if (FAILED(InitComponents()))
 		return false;
-	/*if (!InitScene())
-		return false;*/
+	if (FAILED(InitScene()))
+		return false;
 	return true;
 }
 
-bool CGeneralSettings::InitScene()
+HRESULT CGeneralSettings::InitScene()
 {
 	/*m_Scene = std::shared_ptr<CScene>(new CStageFirst);
 	if (!m_Scene->Ready_Scene())
 		return false;
 	m_Scene->SetActiveState(true);*/
-	return true;
+	m_Scene = std::shared_ptr<CScene>(new CScene_Test);
+	if (FAILED(m_Scene->Ready_Scene()))
+		return E_FAIL;
+	m_Scene->SetActiveState(true);
+
+	return S_OK;
 }
 
-bool CGeneralSettings::InitComponents()
+HRESULT CGeneralSettings::InitComponents()
 {
 	//CComponentHolder::GetInstance()->Reserve_ComponentHolder(20);
 
@@ -78,23 +84,29 @@ bool CGeneralSettings::InitComponents()
 	//	//int x = 0;
 	//	////testcode
 	//}
-	return true;
+	return S_OK;
 }
 
 ///////////////////////////////////////////////////////////for Generic Method
 void CGeneralSettings::Update()
 {
-	//m_Scene->Update_Scene(m_Timer2);
+	//m_Scene->Update_Scene(m_Timer1);
+	
 }
 
-void CGeneralSettings::Late_Update()
+void CGeneralSettings::Last_Update()
 {
-	//m_Scene->LastUpdate_Scene(m_Timer2);
+	//m_Scene->LastUpdate_Scene(m_Timer1);
+	
 }
 
 void CGeneralSettings::Render()
 {
+	m_DxDevice->Render_Begin();
 
+
+
+	m_DxDevice->Render_End();
 	
 	//((CRenderer*)(CComponentHolder::GetInstance()->Get_Component("Renderer").get()))->Render_GameObject();
 	
@@ -125,6 +137,8 @@ void CGeneralSettings::Render()
 
 void CGeneralSettings::OnResize()
 {
+	if(g_DeviceInitState)
+		m_DxDevice->OnResize();
 	//m_Scene->OnResize();
 	//((CRenderer*)CComponentHolder::GetInstance()->Get_Component("Renderer").get())->OnResize();
 }
@@ -220,12 +234,12 @@ std::shared_ptr<DxDevice> CGeneralSettings::GetDevice()
 	return m_DxDevice;
 }
 
-bool CGeneralSettings::InitDxDevice()
+HRESULT CGeneralSettings::InitDxDevice()
 {
-	if (!m_DxDevice->InitDxDevice())
-		return false;
-
-	return true;
+	if (FAILED(m_DxDevice->InitDxDevice()))
+		return E_FAIL;
+	g_DeviceInitState = true;
+	return S_OK;
 }
 
 

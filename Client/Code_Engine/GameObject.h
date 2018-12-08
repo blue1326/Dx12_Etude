@@ -2,10 +2,8 @@
 #define Object_h__
 #include "stdHeaders.h"
 #include "Component.h"
-class CGameObject :public enable_shared_from_this<CGameObject>
+class CGameObject
 {
-public:
-	enum OBJECTTYPE{OBJ_LOGIC,OBJ_GENERIC};
 protected:
 	explicit CGameObject();
 	virtual ~CGameObject();
@@ -20,19 +18,10 @@ public:
 	//virtual void Render_GameObject_Depth(const CTimer& t)=0;
 	//void AddComponent(std::string ComponentTag,std::shared_ptr<CComponent> component);
 	//void AddComponent(eCOMPONENTS comptag, std::shared_ptr<CComponent> component);
-	void OnResize();
+	virtual void OnResize()PURE;
+
 protected:
-	inline shared_ptr<CGameObject> SetRenderer()
-	{
-		return this->shared_from_this();
-	}
-protected:
-	OBJECTTYPE eType;
-	//Components
-protected:
-	//typedef std::map<std::string, std::shared_ptr<CComponent>> COMPONENT;//아마도 삭제
-	//COMPONENT m_Components;
-	//std::array<std::shared_ptr<CComponent>, COMPCNT> m_ComponentArr;
+	virtual void Free(void);
 };
 
 

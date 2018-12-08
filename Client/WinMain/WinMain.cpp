@@ -28,7 +28,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE prevInstance,
 				std::shared_ptr<CTimer>(new CTimer),
 				std::shared_ptr<CTimer>(new CTimer))
 			));
-
+		
 		if (!theApp.Initialize())
 			return 0;
 
