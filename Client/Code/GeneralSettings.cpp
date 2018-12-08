@@ -13,7 +13,6 @@ CGeneralSettings::CGeneralSettings(const std::shared_ptr<DxDevice> Device, const
 {
 	m_Timer1->Reset();
 	m_Timer2->Reset();
-	g_DeviceInitState = true;
 }
 
 CGeneralSettings::~CGeneralSettings()
@@ -25,6 +24,7 @@ bool CGeneralSettings::InitGeneralSetting()
 {
 	if (FAILED(InitDxDevice()))
 		return false;
+	g_DeviceInitState = true;
 	if (FAILED(InitComponents()))
 		return false;
 	if (FAILED(InitScene()))
@@ -90,19 +90,23 @@ HRESULT CGeneralSettings::InitComponents()
 ///////////////////////////////////////////////////////////for Generic Method
 void CGeneralSettings::Update()
 {
-	m_Scene->Update_Scene(m_Timer1);
+	//m_Scene->Update_Scene(m_Timer1);
 	
 }
 
 void CGeneralSettings::Last_Update()
 {
-	m_Scene->LastUpdate_Scene(m_Timer1);
+	//m_Scene->LastUpdate_Scene(m_Timer1);
 	
 }
 
 void CGeneralSettings::Render()
 {
+	m_DxDevice->Render_Begin();
 
+
+
+	m_DxDevice->Render_End();
 	
 	//((CRenderer*)(CComponentHolder::GetInstance()->Get_Component("Renderer").get()))->Render_GameObject();
 	
@@ -133,6 +137,8 @@ void CGeneralSettings::Render()
 
 void CGeneralSettings::OnResize()
 {
+	if(g_DeviceInitState)
+		m_DxDevice->OnResize();
 	//m_Scene->OnResize();
 	//((CRenderer*)CComponentHolder::GetInstance()->Get_Component("Renderer").get())->OnResize();
 }
