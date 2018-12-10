@@ -11,7 +11,7 @@ public:
 	//CComponent
 	float Get_ViewZ(void) { return 0; }
 public:
-	virtual bool Init_GameObject(void)=0;
+	virtual HRESULT Init_GameObject(void)=0;
 	virtual int Update_GameObject(const std::shared_ptr<CTimer> t)=0;
 	virtual int LastUpdate_GameObject(const std::shared_ptr<CTimer> t)=0;
 	virtual void Render_GameObject()=0;

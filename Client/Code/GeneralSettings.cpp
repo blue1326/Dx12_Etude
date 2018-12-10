@@ -1,12 +1,16 @@
 //#include "stdHeaders.h"
 #include "GeneralSettings.h"
 //#include "Renderer.h"
-//#include "Transform.h"
-//#include "Camera.h"
+
 #include "Component.h"
+#include "ComponentHolder.h"
 //#include "StageFirst.h"
 //#include "ComponentHolder.h"
 #include "testScene.h"
+
+#include "Transform.h"
+#include "Camera.h"
+#include "Renderer.h" //나중에 대체
 
 CGeneralSettings::CGeneralSettings(const std::shared_ptr<DxDevice> Device, const std::shared_ptr<CTimer> Timer1, const std::shared_ptr<CTimer> Timer2)
 	: m_DxDevice(Device), m_Timer1(move(Timer1)), m_Timer2(move(Timer2))
@@ -29,6 +33,7 @@ bool CGeneralSettings::InitGeneralSetting()
 		return false;
 	if (FAILED(InitScene()))
 		return false;
+	
 	return true;
 }
 
@@ -48,6 +53,15 @@ HRESULT CGeneralSettings::InitScene()
 
 HRESULT CGeneralSettings::InitComponents()
 {
+	CComponentHolder::GetInstance()->Reserve_ComponentHolder(20);
+	shared_ptr<CComponent> inst = std::shared_ptr<CComponent>(new CRenderer(m_DxDevice));
+	if(FAILED(inst->Init_Component()))
+		return E_FAIL;
+	CComponentHolder::GetInstance()->AddOriginComponent("Renderer", inst);
+	inst.reset(new CTransform(m_DxDevice));
+	CComponentHolder::GetInstance()->AddOriginComponent("Transform", inst);
+	inst.reset(new CCamera(m_DxDevice));
+	CComponentHolder::GetInstance()->AddOriginComponent("Camera", inst);
 	//CComponentHolder::GetInstance()->Reserve_ComponentHolder(20);
 
 	//std::shared_ptr<CComponent> inst = std::shared_ptr<CComponent>(new CRenderer(m_DxDevice));
@@ -90,14 +104,16 @@ HRESULT CGeneralSettings::InitComponents()
 ///////////////////////////////////////////////////////////for Generic Method
 void CGeneralSettings::Update()
 {
+	
 	//m_Scene->Update_Scene(m_Timer1);
 	
 }
 
 void CGeneralSettings::Last_Update()
 {
-	//m_Scene->LastUpdate_Scene(m_Timer1);
-	
+
+//	m_Scene->LastUpdate_Scene(m_Timer1);
+	//system("cls");
 }
 
 void CGeneralSettings::Render()

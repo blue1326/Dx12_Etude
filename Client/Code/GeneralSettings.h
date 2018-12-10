@@ -3,7 +3,7 @@
 #include "stdHeaders.h"
 #include "DxDevice.h"
 #include "Component.h"
-#include "Renderer.h" //나중에 대체
+
 #include "Scene.h"
 class CGeneralSettings 
 {

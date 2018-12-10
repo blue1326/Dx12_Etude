@@ -21,5 +21,9 @@
 #pragma comment(lib, "D3D12.lib")
 #pragma comment(lib, "dxgi.lib")
 
+inline static float AspectRatio()
+{
+	return static_cast<float>(g_ClientWidth) / g_ClientHeight;
+}
 
 #endif // stdHeaders_h__

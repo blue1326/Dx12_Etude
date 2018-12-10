@@ -12,7 +12,7 @@ public:
 	virtual ~CComponent();
 	
 public:
-	virtual bool Init_Component();
+	virtual HRESULT Init_Component();
 	virtual void Update_Component(const std::shared_ptr<CTimer> t);
 	virtual std::shared_ptr<CComponent> Clone()=0;
 	virtual void OnResize();

@@ -2,7 +2,7 @@
 #include "stdHeaders.h"
 //#include "API_Setup.h"
 #include "API_Derived.h"
-//#include "Timer.h"
+#include "Timer.h"
 #include "dxException.h"
 
 #if defined(DEBUG) || defined(_DEBUG)

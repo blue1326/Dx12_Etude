@@ -10,9 +10,9 @@ CComponent::~CComponent()
 
 }
 
-bool CComponent::Init_Component()
+HRESULT CComponent::Init_Component()
 {
-	return true;
+	return S_OK;
 }
 
 //HRESULT CComponent::Ready_Component()

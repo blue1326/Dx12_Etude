@@ -18,7 +18,7 @@ public:
 	explicit CRenderer(const std::shared_ptr<DxDevice> Device);
 	virtual ~CRenderer();
 public:
-	virtual bool Init_Component()override;
+	virtual HRESULT Init_Component()override;
 	virtual void Update_Component(const std::shared_ptr<CTimer> t)override;
 	// render to gameobject
 	virtual void Render_GameObject(void);

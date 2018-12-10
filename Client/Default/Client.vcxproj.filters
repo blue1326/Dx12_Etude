@@ -87,6 +87,24 @@
     <ClCompile Include="..\Code\testScene.cpp">
       <Filter>02.toClient</Filter>
     </ClCompile>
+    <ClCompile Include="..\Code_Engine\ComponentHolder.cpp">
+      <Filter>01.ToEngine\00.Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code_Engine\Transform.cpp">
+      <Filter>01.ToEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code_Engine\Camera.cpp">
+      <Filter>01.ToEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code_Engine\MathHelper.cpp">
+      <Filter>01.ToEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code_Engine\TestObject.cpp">
+      <Filter>02.toClient</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code_Engine\TestObject_Camera.cpp">
+      <Filter>02.toClient</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\WinAPI\API_Setup.h">
@@ -156,6 +174,27 @@
       <Filter>02.toClient</Filter>
     </ClInclude>
     <ClInclude Include="..\Code\testScene.h">
+      <Filter>02.toClient</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code_Engine\ComponentHolder.h">
+      <Filter>01.ToEngine\00.Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\Templates.h">
+      <Filter>99.Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code_Engine\Transform.h">
+      <Filter>01.ToEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code_Engine\Camera.h">
+      <Filter>01.ToEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code_Engine\MathHelper.h">
+      <Filter>01.ToEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code_Engine\TestObject.h">
+      <Filter>02.toClient</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code_Engine\TestObject_Camera.h">
       <Filter>02.toClient</Filter>
     </ClInclude>
   </ItemGroup>

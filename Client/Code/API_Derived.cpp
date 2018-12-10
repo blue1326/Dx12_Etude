@@ -4,8 +4,8 @@
 
 HWND g_hWnd;
 HINSTANCE g_hInst;
-int g_ClientWidth = 1920;
-int g_ClientHeight = 1080;
+int g_ClientWidth = 800;
+int g_ClientHeight = 600;
 bool g_DeviceInitState = false;
 XMMATRIX g_matView = XMMatrixIdentity();
 XMMATRIX g_matProj = XMMatrixIdentity();

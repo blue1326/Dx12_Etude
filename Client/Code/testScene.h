@@ -15,6 +15,7 @@ public:
 	virtual int LastUpdate_Scene(const std::shared_ptr<CTimer> t);
 	virtual void Render_Scene(void);
 private:
+	HRESULT Ready_LayerTestCam(const wchar_t* pLayerTag);
 	HRESULT Ready_LayerTest(const wchar_t* pLayerTag);
 };
 

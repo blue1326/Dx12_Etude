@@ -10,6 +10,10 @@ CLayer::~CLayer()
 
 HRESULT CLayer::Ready_Layer(void)
 {
+	for (const auto &j : m_ObjList)
+	{
+		j->Init_GameObject();
+	}
 	return S_OK;
 }
 

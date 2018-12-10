@@ -11,11 +11,11 @@ CRenderer::~CRenderer()
 
 }
 
-bool CRenderer::Init_Component()
+HRESULT CRenderer::Init_Component()
 {
 	
 
-	return true;
+	return S_OK;
 }
 
 void CRenderer::Update_Component(const std::shared_ptr<CTimer> t)

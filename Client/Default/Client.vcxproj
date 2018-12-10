@@ -89,7 +89,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>../Code;../Code_Engine; ../Headers; ../WinAPI; ../WinMain; ../../Generic; ../../Microsoft;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../Code;../Code_Engine; ../Headers; ../WinAPI; ../WinMain; ../../Generic; ../../Microsoft;../../DxCookBook;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -103,7 +103,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>../Code;../Code_Engine; ../Headers; ../WinAPI; ../WinMain; ../../Generic; ../../Microsoft;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../Code;../Code_Engine; ../Headers; ../WinAPI; ../WinMain; ../../Generic; ../../Microsoft;../../DxCookBook;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -119,7 +119,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>../Code;../Code_Engine; ../Headers; ../WinAPI; ../WinMain; ../../Generic; ../../Microsoft;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../Code;../Code_Engine; ../Headers; ../WinAPI; ../WinMain; ../../Generic; ../../Microsoft;../../DxCookBook;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -137,7 +137,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>../Code;../Code_Engine; ../Headers; ../WinAPI; ../WinMain; ../../Generic; ../../Microsoft;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../Code;../Code_Engine; ../Headers; ../WinAPI; ../WinMain; ../../Generic; ../../Microsoft;../../DxCookBook;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -150,15 +150,21 @@
     <ClCompile Include="..\Code\API_Derived.cpp" />
     <ClCompile Include="..\Code\GeneralSettings.cpp" />
     <ClCompile Include="..\Code\testScene.cpp" />
+    <ClCompile Include="..\Code_Engine\Camera.cpp" />
     <ClCompile Include="..\Code_Engine\Component.cpp" />
+    <ClCompile Include="..\Code_Engine\ComponentHolder.cpp" />
     <ClCompile Include="..\Code_Engine\DxDevice.cpp" />
     <ClCompile Include="..\Code_Engine\dxException.cpp" />
     <ClCompile Include="..\Code_Engine\GameObject.cpp" />
     <ClCompile Include="..\Code_Engine\Layer.cpp" />
+    <ClCompile Include="..\Code_Engine\MathHelper.cpp" />
     <ClCompile Include="..\Code_Engine\Renderer.cpp" />
     <ClCompile Include="..\Code_Engine\Scene.cpp" />
     <ClCompile Include="..\Code_Engine\ShaderCompiler.cpp" />
+    <ClCompile Include="..\Code_Engine\TestObject.cpp" />
+    <ClCompile Include="..\Code_Engine\TestObject_Camera.cpp" />
     <ClCompile Include="..\Code_Engine\Timer.cpp" />
+    <ClCompile Include="..\Code_Engine\Transform.cpp" />
     <ClCompile Include="..\WinAPI\API_Setup.cpp" />
     <ClCompile Include="..\WinMain\WinMain.cpp" />
   </ItemGroup>
@@ -166,15 +172,21 @@
     <ClInclude Include="..\Code\API_Derived.h" />
     <ClInclude Include="..\Code\GeneralSettings.h" />
     <ClInclude Include="..\Code\testScene.h" />
+    <ClInclude Include="..\Code_Engine\Camera.h" />
     <ClInclude Include="..\Code_Engine\Component.h" />
+    <ClInclude Include="..\Code_Engine\ComponentHolder.h" />
     <ClInclude Include="..\Code_Engine\DxDevice.h" />
     <ClInclude Include="..\Code_Engine\dxException.h" />
     <ClInclude Include="..\Code_Engine\GameObject.h" />
     <ClInclude Include="..\Code_Engine\Layer.h" />
+    <ClInclude Include="..\Code_Engine\MathHelper.h" />
     <ClInclude Include="..\Code_Engine\Renderer.h" />
     <ClInclude Include="..\Code_Engine\Scene.h" />
     <ClInclude Include="..\Code_Engine\ShaderCompiler.h" />
+    <ClInclude Include="..\Code_Engine\TestObject.h" />
+    <ClInclude Include="..\Code_Engine\TestObject_Camera.h" />
     <ClInclude Include="..\Code_Engine\Timer.h" />
+    <ClInclude Include="..\Code_Engine\Transform.h" />
     <ClInclude Include="..\Headers\d3dHeaders.h" />
     <ClInclude Include="..\Headers\Functor.h" />
     <ClInclude Include="..\Headers\GlobalVariables.h" />
@@ -182,6 +194,7 @@
     <ClInclude Include="..\Headers\stdHeaders.h" />
     <ClInclude Include="..\Headers\STL.h" />
     <ClInclude Include="..\Headers\stream.h" />
+    <ClInclude Include="..\Headers\Templates.h" />
     <ClInclude Include="..\Headers\unknown.h" />
     <ClInclude Include="..\Headers\Utilitys.h" />
     <ClInclude Include="..\Headers\windowsHeaders.h" />
