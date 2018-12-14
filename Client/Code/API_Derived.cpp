@@ -52,6 +52,7 @@ int CApiSetUP_Derived::Run()
 	//need timer
 	assert(m_GS->GetTimer(CGeneralSettings::AllTimer) != nullptr);
 	m_GS->TimerReset(CGeneralSettings::AllTimer);
+	m_GS->SetFramelateLimit(60.f);
 	//message Loops
 	while (msg.message != WM_QUIT)
 	{
@@ -69,12 +70,14 @@ int CApiSetUP_Derived::Run()
 
 			if (!m_AppPaused)
 			{
-				CalculateFrameStats();
-				m_GS->Update();
-				//Update();
-				m_GS->Render();
-				//Render();
-				m_GS->Last_Update();
+				if (m_GS->CalculateFrameStats(g_hWnd, m_MainWndCaption))
+				{
+					m_GS->Update();
+					//Update();
+					m_GS->Render();
+					//Render();
+					m_GS->Last_Update();
+				}
 
 			}
 			else
@@ -88,6 +91,7 @@ int CApiSetUP_Derived::Run()
 
 bool CApiSetUP_Derived::Initialize()
 {
+	m_MainWndCaption = L"Dx12 Etude";
 	if (!InitMainWindow())
 		return false;
 	if (!m_GS->InitGeneralSetting())
@@ -231,10 +235,10 @@ void CApiSetUP_Derived::SetGeneralSettings(std::unique_ptr<CGeneralSettings> gs)
 	m_GS = std::move(gs);
 }
 
-void CApiSetUP_Derived::CalculateFrameStats()
-{
-	m_GS->CalculateFrameStats(g_hWnd, m_MainWndCaption);
-}
+//void CApiSetUP_Derived::CalculateFrameStats()
+//{
+//	m_GS->CalculateFrameStats(g_hWnd, m_MainWndCaption);
+//}
 
 void CApiSetUP_Derived::CreateRtvAndDsvDescriptorHeaps()
 {

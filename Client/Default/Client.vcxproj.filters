@@ -105,6 +105,15 @@
     <ClCompile Include="..\Code_Engine\TestObject_Camera.cpp">
       <Filter>02.toClient</Filter>
     </ClCompile>
+    <ClCompile Include="..\Code_Engine\box.cpp">
+      <Filter>01.ToEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code_Engine\MeshGeometry.cpp">
+      <Filter>01.ToEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code_Engine\BufferCreater.cpp">
+      <Filter>01.ToEngine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\WinAPI\API_Setup.h">
@@ -196,6 +205,15 @@
     </ClInclude>
     <ClInclude Include="..\Code_Engine\TestObject_Camera.h">
       <Filter>02.toClient</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code_Engine\box.h">
+      <Filter>01.ToEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code_Engine\MeshGeometry.h">
+      <Filter>01.ToEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code_Engine\BufferCreater.h">
+      <Filter>01.ToEngine</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

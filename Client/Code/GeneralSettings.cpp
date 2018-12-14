@@ -11,9 +11,10 @@
 #include "Transform.h"
 #include "Camera.h"
 #include "Renderer.h" //나중에 대체
+#include "box.h"
 
 CGeneralSettings::CGeneralSettings(const std::shared_ptr<DxDevice> Device, const std::shared_ptr<CTimer> Timer1, const std::shared_ptr<CTimer> Timer2)
-	: m_DxDevice(Device), m_Timer1(move(Timer1)), m_Timer2(move(Timer2))
+	: m_DxDevice(Device), m_Timer1(move(Timer1)), m_Timer2(move(Timer2)),m_fTimeAcc(0.f),m_CallPerSec(0.f)
 {
 	m_Timer1->Reset();
 	m_Timer2->Reset();
@@ -62,6 +63,10 @@ HRESULT CGeneralSettings::InitComponents()
 	CComponentHolder::GetInstance()->AddOriginComponent("Transform", inst);
 	inst.reset(new CCamera(m_DxDevice));
 	CComponentHolder::GetInstance()->AddOriginComponent("Camera", inst);
+	inst.reset(new CBox(m_DxDevice));
+	if (FAILED(inst->Init_Component()))
+		return E_FAIL;
+	CComponentHolder::GetInstance()->AddOriginComponent("Box", inst);
 	//CComponentHolder::GetInstance()->Reserve_ComponentHolder(20);
 
 	//std::shared_ptr<CComponent> inst = std::shared_ptr<CComponent>(new CRenderer(m_DxDevice));
@@ -105,44 +110,27 @@ HRESULT CGeneralSettings::InitComponents()
 void CGeneralSettings::Update()
 {
 	
-	//m_Scene->Update_Scene(m_Timer1);
+	m_Scene->Update_Scene(m_Timer1);
 	
 }
 
 void CGeneralSettings::Last_Update()
 {
 
-//	m_Scene->LastUpdate_Scene(m_Timer1);
-	//system("cls");
+	m_Scene->LastUpdate_Scene(m_Timer1);
+	
 }
 
 void CGeneralSettings::Render()
 {
-	m_DxDevice->Render_Begin();
-
-
-
-	m_DxDevice->Render_End();
 	
-	//((CRenderer*)(CComponentHolder::GetInstance()->Get_Component("Renderer").get()))->Render_GameObject();
-	
+		
+		m_DxDevice->Render_Begin();
 
 
 
+		m_DxDevice->Render_End();
 
-	//m_Scene->Render_Scene(m_Timer2);
-	//it is test code
-	 /*OC::iterator iter = m_OriginalComponents.find("Renderer");
-	 ((CRenderer*)(iter->second.get()))->Render_Begin();
-	 ((CRenderer*)(iter->second.get()))->Render_End();*/
-		// ->Render_Begin();
-	 //iter->second)->Render_End();
-	/*m_DxDevice->RenderBegin();
-	m_DxDevice->RenderEnd();*/
-	//((CRenderer*)m_OriginalRenderer.get())->Render_Begin();
-	//((CRenderer*)m_OriginalRenderer.get())->Render_End();
-	 //m_OriginalRenderer->Render_Begin();
-	//m_OriginalRenderer->Render_End();
 
 }
 //
@@ -156,7 +144,6 @@ void CGeneralSettings::OnResize()
 	if(g_DeviceInitState)
 		m_DxDevice->OnResize();
 	//m_Scene->OnResize();
-	//((CRenderer*)CComponentHolder::GetInstance()->Get_Component("Renderer").get())->OnResize();
 }
 //////////////////////////////////////////////////////////for TimerMethod
 std::shared_ptr<CTimer> CGeneralSettings::GetTimer(TimerDef td)
@@ -245,6 +232,13 @@ void CGeneralSettings::TimerTick(TimerDef td)
 	
 }
 
+void CGeneralSettings::SetFramelateLimit(const float& _Limit)
+{
+	m_CallPerSec = 1.f / _Limit;
+}
+
+
+
 std::shared_ptr<DxDevice> CGeneralSettings::GetDevice()
 {
 	return m_DxDevice;
@@ -259,34 +253,55 @@ HRESULT CGeneralSettings::InitDxDevice()
 }
 
 
-void CGeneralSettings::CalculateFrameStats(const HWND& mainWnd, std::wstring caption)
+bool CGeneralSettings::CalculateFrameStats(const HWND& mainWnd, std::wstring caption)
 {
+	
 	// Code computes the average frames per second, and also the 
 	// average time it takes to render one frame.  These stats 
 	// are appended to the window caption bar.
-
+	bool isLimit = false;
 	static int frameCnt = 0;
+	static int frameCntLimit = 0;
 	static float timeElapsed = 0.0f;
 
 	frameCnt++;
+	
 
+	m_fTimeAcc += m_Timer1->DeltaTime();
+	if (m_fTimeAcc > m_CallPerSec)
+	{
+		frameCntLimit++;
+		m_fTimeAcc = 0.f;
+		isLimit = true;
+	}
+
+	
 	// Compute averages over one second period.
 	if ((m_Timer1->TotalTime() - timeElapsed) >= 1.0f)
 	{
 		float fps = (float)frameCnt; // fps = frameCnt / 1
+		
+		float limitedfps = (float)frameCntLimit;
+		
 		float mspf = 1000.0f / fps;
 
+		std::wstring limitfpsStr = std::to_wstring(limitedfps);
 		std::wstring fpsStr = std::to_wstring(fps);
 		std::wstring mspfStr = std::to_wstring(mspf);
 		
 		std::wstring windowText = caption +
-			L"    fps: " + fpsStr +
-			L"   mspf: " + mspfStr;
+			L" Limited Fps: " + limitfpsStr +
+			L"         Fps: " + fpsStr +
+			L"        mspf: " + mspfStr;
 
 		SetWindowText(mainWnd, windowText.c_str());
 
 		// Reset for next average.
 		frameCnt = 0;
+		frameCntLimit = 0;
 		timeElapsed += 1.0f;
 	}
+
+	return isLimit;
 }
+

@@ -27,8 +27,16 @@ public: //for Timer method
 	void TimerStop(TimerDef td);
 	void TimerTick(TimerDef td);
 
+public: //for framelate
+
 public: //for frame Count
-	void CalculateFrameStats(const HWND& mainWnd, std::wstring caption);
+	bool CalculateFrameStats(const HWND& mainWnd, std::wstring caption);
+private: //for frame Limit
+	float m_CallPerSec;
+	float m_fTimeAcc;
+public: //for frame Limit
+	void SetFramelateLimit(const float& _Limit);
+	
 public: //for DxDevice method
 	std::shared_ptr<DxDevice> GetDevice();
 	HRESULT InitDxDevice();
@@ -36,8 +44,10 @@ private://for components
 	HRESULT InitComponents();
 private:
 	const std::shared_ptr<CTimer> m_Timer1 = nullptr;
+	
 	const std::shared_ptr<CTimer> m_Timer2 = nullptr;
 	const std::shared_ptr<DxDevice> m_DxDevice = nullptr;
+	
 	
 
 	std::shared_ptr<CScene> m_Scene = nullptr;

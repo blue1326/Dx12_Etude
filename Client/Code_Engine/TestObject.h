@@ -19,6 +19,8 @@ public:
 protected:
 	
 private:
+	shared_ptr<CComponent> pBox;
+	shared_ptr<CComponent> pTransform;
 };
  
 

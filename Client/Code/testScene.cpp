@@ -63,7 +63,8 @@ HRESULT CScene_Test::Ready_LayerTest(const wchar_t* pLayerTag)
 
 	Layer->Add_GameObject(shared_ptr<CGameObject>(new CTestObject));
 
-
+	if (FAILED(Layer->Ready_Layer()))
+		return E_FAIL;
 
 
 

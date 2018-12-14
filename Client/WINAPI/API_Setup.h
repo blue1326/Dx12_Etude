@@ -24,7 +24,7 @@ public:
 	
 
 protected:
-	virtual void CalculateFrameStats();
+	//virtual void CalculateFrameStats();
 	virtual void OnResize();
 	
 protected:

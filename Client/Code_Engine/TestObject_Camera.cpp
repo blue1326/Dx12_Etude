@@ -39,7 +39,7 @@ int CTestObject_Camera::Update_GameObject(const std::shared_ptr<CTimer> t)
 
 int CTestObject_Camera::LastUpdate_GameObject(const std::shared_ptr<CTimer> t)
 {
-	cout << "2" << endl;
+	
 	return 0;
 }
 

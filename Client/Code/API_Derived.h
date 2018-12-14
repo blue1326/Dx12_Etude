@@ -23,7 +23,7 @@ public:
 	void SetGeneralSettings(std::unique_ptr<CGeneralSettings> gs);
 
 private:
-	void CalculateFrameStats();
+	
 	virtual void CreateRtvAndDsvDescriptorHeaps();
 	virtual void OnResize();
 	

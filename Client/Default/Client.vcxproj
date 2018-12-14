@@ -150,6 +150,8 @@
     <ClCompile Include="..\Code\API_Derived.cpp" />
     <ClCompile Include="..\Code\GeneralSettings.cpp" />
     <ClCompile Include="..\Code\testScene.cpp" />
+    <ClCompile Include="..\Code_Engine\box.cpp" />
+    <ClCompile Include="..\Code_Engine\BufferCreater.cpp" />
     <ClCompile Include="..\Code_Engine\Camera.cpp" />
     <ClCompile Include="..\Code_Engine\Component.cpp" />
     <ClCompile Include="..\Code_Engine\ComponentHolder.cpp" />
@@ -158,6 +160,7 @@
     <ClCompile Include="..\Code_Engine\GameObject.cpp" />
     <ClCompile Include="..\Code_Engine\Layer.cpp" />
     <ClCompile Include="..\Code_Engine\MathHelper.cpp" />
+    <ClCompile Include="..\Code_Engine\MeshGeometry.cpp" />
     <ClCompile Include="..\Code_Engine\Renderer.cpp" />
     <ClCompile Include="..\Code_Engine\Scene.cpp" />
     <ClCompile Include="..\Code_Engine\ShaderCompiler.cpp" />
@@ -172,6 +175,8 @@
     <ClInclude Include="..\Code\API_Derived.h" />
     <ClInclude Include="..\Code\GeneralSettings.h" />
     <ClInclude Include="..\Code\testScene.h" />
+    <ClInclude Include="..\Code_Engine\box.h" />
+    <ClInclude Include="..\Code_Engine\BufferCreater.h" />
     <ClInclude Include="..\Code_Engine\Camera.h" />
     <ClInclude Include="..\Code_Engine\Component.h" />
     <ClInclude Include="..\Code_Engine\ComponentHolder.h" />
@@ -180,6 +185,7 @@
     <ClInclude Include="..\Code_Engine\GameObject.h" />
     <ClInclude Include="..\Code_Engine\Layer.h" />
     <ClInclude Include="..\Code_Engine\MathHelper.h" />
+    <ClInclude Include="..\Code_Engine\MeshGeometry.h" />
     <ClInclude Include="..\Code_Engine\Renderer.h" />
     <ClInclude Include="..\Code_Engine\Scene.h" />
     <ClInclude Include="..\Code_Engine\ShaderCompiler.h" />

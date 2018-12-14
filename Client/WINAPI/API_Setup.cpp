@@ -78,7 +78,7 @@ int CApiSetUP::Run()
 
 			if (!m_AppPaused)
 			{
-				CalculateFrameStats();
+				//CalculateFrameStats();
 				//m_GS->Update();
 				//Update();
 				//m_GS->Render();
@@ -183,11 +183,11 @@ LRESULT CApiSetUP::MsgProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 	return DefWindowProc(hwnd, msg, wParam, lParam);
 }
 
-
-void CApiSetUP::CalculateFrameStats()
-{
-	
-}
+//
+//void CApiSetUP::CalculateFrameStats()
+//{
+//	
+//}
 
 void CApiSetUP::OnResize()
 {

@@ -2,6 +2,8 @@
 #include <windowsx.h>
 #include "dxException.h"
 DxDevice::DxDevice()
+	:m_4xMsaaState(false)
+	,m_4xMsaaQuality(0)
 {
 
 }
@@ -83,8 +85,8 @@ HRESULT DxDevice::InitDirect3D_Environment()
 		&msQualityLevels,
 		sizeof(msQualityLevels)));
 
-	m4xMsaaQuality = msQualityLevels.NumQualityLevels;
-	assert(m4xMsaaQuality > 0 && "Unexpected MSAA quality level.");
+	m_4xMsaaQuality = msQualityLevels.NumQualityLevels;
+	assert(m_4xMsaaQuality > 0 && "Unexpected MSAA quality level.");
 
 #ifdef _DEBUG
 	LogAdapters(m_BackBufferFormat);
@@ -135,8 +137,8 @@ void DxDevice::CreateSwapChain()
 	sd.BufferDesc.Format = m_BackBufferFormat;
 	sd.BufferDesc.ScanlineOrdering = DXGI_MODE_SCANLINE_ORDER_UNSPECIFIED;
 	sd.BufferDesc.Scaling = DXGI_MODE_SCALING_UNSPECIFIED;
-	sd.SampleDesc.Count = m4xMsaaState ? 4 : 1;
-	sd.SampleDesc.Quality = m4xMsaaState ? (m4xMsaaQuality - 1) : 0;
+	sd.SampleDesc.Count = m_4xMsaaState ? 4 : 1;
+	sd.SampleDesc.Quality = m_4xMsaaState ? (m_4xMsaaQuality - 1) : 0;
 	sd.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
 	sd.BufferCount = SwapChainBufferCount;
 	sd.OutputWindow = g_hWnd;//m_hMainWnd;
@@ -213,6 +215,16 @@ void DxDevice::FlushCommandQueue()
 	}
 }
 
+Microsoft::WRL::ComPtr<ID3D12CommandAllocator> DxDevice::GetCommandAllocator()
+{
+	return m_DirectCmdListAlloc;
+}
+
+Microsoft::WRL::ComPtr<ID3D12CommandQueue> DxDevice::GetCommandQueue()
+{
+	return m_CommandQueue;
+}
+
 HRESULT DxDevice::BuildPipelines()
 {
 	ThrowIfFailed(m_CommandList->Reset(m_DirectCmdListAlloc.Get(), nullptr));
@@ -252,14 +264,19 @@ void DxDevice::BuildPSO()
 
 bool DxDevice::Get4xMsaaState() const
 {
-	return m4xMsaaState;
+	return m_4xMsaaState;
+}
+
+UINT DxDevice::Get4xMsaaQuality() const
+{
+	return m_4xMsaaQuality;
 }
 
 void DxDevice::Set4xMsaaState(bool value)
 {
-	if (m4xMsaaState != value)
+	if (m_4xMsaaState != value)
 	{
-		m4xMsaaState = value;
+		m_4xMsaaState = value;
 
 		// Recreate the swapchain and buffers with new multisample settings.
 		CreateSwapChain();
@@ -316,8 +333,8 @@ void DxDevice::OnResize()
 	// we need to create the depth buffer resource with a typeless format.  
 	depthStencilDesc.Format = DXGI_FORMAT_R24G8_TYPELESS;
 
-	depthStencilDesc.SampleDesc.Count = m4xMsaaState ? 4 : 1;
-	depthStencilDesc.SampleDesc.Quality = m4xMsaaState ? (m4xMsaaQuality - 1) : 0;
+	depthStencilDesc.SampleDesc.Count = m_4xMsaaState ? 4 : 1;
+	depthStencilDesc.SampleDesc.Quality = m_4xMsaaState ? (m_4xMsaaQuality - 1) : 0;
 	depthStencilDesc.Layout = D3D12_TEXTURE_LAYOUT_UNKNOWN;
 	depthStencilDesc.Flags = D3D12_RESOURCE_FLAG_ALLOW_DEPTH_STENCIL;
 
