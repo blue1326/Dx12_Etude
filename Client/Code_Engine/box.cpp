@@ -227,7 +227,7 @@ void CBox::BuildPSO()
 
 void CBox::CreateUplaodBuffer()
 {
-	m_ElementByteSize = sizeof()
+	//m_ElementByteSize = sizeof()
 }
 
 std::shared_ptr<CComponent> CBox::Clone()
