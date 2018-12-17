@@ -10,6 +10,11 @@ struct Vertex
 	XMFLOAT4 Color;
 };
 
+struct ObjectConstants
+{
+	//XMFLOAT4X4 WorldViewProj = MathHelper::Identity4x4();
+};
+
 class CBox : public CComponent
 {
 public:
@@ -39,7 +44,18 @@ private:
 
 	std::shared_ptr<MeshGeometry> m_BoxGeo;
 	ComPtr<ID3D12PipelineState> m_PSO;
+public:
+	ComPtr<ID3D12PipelineState> GetPSO()
+	{
+		return m_PSO;
+	}
+private://for uploadbuffer
+	Microsoft::WRL::ComPtr<ID3D12Resource> m_UploadBuffer;
+	BYTE* m_MappedData = nullptr;
 
+	UINT m_ElementByteSize = 0;
+	bool m_IsConstantBuffer = false;
+	void CreateUplaodBuffer();
 public:
 	virtual std::shared_ptr<CComponent> Clone()override;
 private:

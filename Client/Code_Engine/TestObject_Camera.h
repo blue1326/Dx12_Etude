@@ -3,13 +3,13 @@
 #include "stdHeaders.h"
 #include "GameObject.h"
 #include "Component.h"
-
+#include "DxDevice.h"
 
 
 class CTestObject_Camera : public CGameObject
 {
 public:
-	CTestObject_Camera();
+	explicit CTestObject_Camera(shared_ptr<DxDevice> _device);
 	~CTestObject_Camera();
 public:
 	virtual HRESULT Init_GameObject(void)override;

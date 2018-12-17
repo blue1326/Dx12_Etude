@@ -3,12 +3,13 @@
 #include "stdHeaders.h"
 #include "GameObject.h"
 #include "Layer.h"
+#include "DxDevice.h"
 class CTimer;
 
 class CScene
 {
-public:
-	explicit CScene();
+protected:
+	explicit CScene(shared_ptr<DxDevice> _device);
 	virtual ~CScene();
 public :
 	//active state setter and getter
@@ -36,6 +37,7 @@ public:
 	typedef map<const wchar_t*, shared_ptr<CLayer>> MAPLAYER;
 
 protected:
+	shared_ptr<DxDevice> m_DxDevice;
 	MAPLAYER m_mapLayer;
 	bool isActive = false;
 };

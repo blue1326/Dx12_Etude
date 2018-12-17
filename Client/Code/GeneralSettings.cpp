@@ -44,7 +44,7 @@ HRESULT CGeneralSettings::InitScene()
 	if (!m_Scene->Ready_Scene())
 		return false;
 	m_Scene->SetActiveState(true);*/
-	m_Scene = std::shared_ptr<CScene>(new CScene_Test);
+	m_Scene = std::shared_ptr<CScene>(new CScene_Test(m_DxDevice));
 	if (FAILED(m_Scene->Ready_Scene()))
 		return E_FAIL;
 	m_Scene->SetActiveState(true);
@@ -127,7 +127,7 @@ void CGeneralSettings::Render()
 		
 		m_DxDevice->Render_Begin();
 
-
+		dynamic_cast<CRenderer*>(CComponentHolder::GetInstance()->Get_Component("Renderer").get())->Render_GameObject();
 
 		m_DxDevice->Render_End();
 

@@ -1,6 +1,7 @@
 #include "GameObject.h"
 
-CGameObject::CGameObject()
+CGameObject::CGameObject(shared_ptr<DxDevice> _device)
+	:m_DxDevice(_device)
 {
 
 }

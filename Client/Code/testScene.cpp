@@ -2,7 +2,10 @@
 #include "Layer.h"
 #include "TestObject.h"
 #include "TestObject_Camera.h"
-CScene_Test::CScene_Test()
+
+
+CScene_Test::CScene_Test(shared_ptr<DxDevice> _device)
+	:CScene::CScene(_device)
 {
 
 }
@@ -43,7 +46,7 @@ HRESULT CScene_Test::Ready_LayerTestCam(const wchar_t* pLayerTag)
 	if (nullptr == Layer)
 		return E_FAIL;
 
-	Layer->Add_GameObject(shared_ptr<CGameObject>(new CTestObject_Camera));
+	Layer->Add_GameObject(shared_ptr<CGameObject>(new CTestObject_Camera(m_DxDevice)));
 	
 	
 	
@@ -61,7 +64,7 @@ HRESULT CScene_Test::Ready_LayerTest(const wchar_t* pLayerTag)
 	if (nullptr == Layer)
 		return E_FAIL;
 
-	Layer->Add_GameObject(shared_ptr<CGameObject>(new CTestObject));
+	Layer->Add_GameObject(shared_ptr<CGameObject>(new CTestObject(m_DxDevice)));
 
 	if (FAILED(Layer->Ready_Layer()))
 		return E_FAIL;

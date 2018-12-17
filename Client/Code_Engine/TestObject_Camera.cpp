@@ -4,7 +4,10 @@
 #include "Transform.h"
 #include "Camera.h"
 
-CTestObject_Camera::CTestObject_Camera()
+
+
+CTestObject_Camera::CTestObject_Camera(shared_ptr<DxDevice> _device)
+	:CGameObject::CGameObject(_device)
 {
 
 }

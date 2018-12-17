@@ -1,6 +1,9 @@
 #include "Scene.h"
 #include "Layer.h"
-CScene::CScene()
+
+
+CScene::CScene(shared_ptr<DxDevice> _device)
+	:m_DxDevice(_device)
 {
 
 }

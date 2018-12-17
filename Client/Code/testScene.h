@@ -3,10 +3,11 @@
 
 #include "stdHeaders.h"
 #include "Scene.h"
+#include "DxDevice.h"
 class CScene_Test : public CScene
 {
 public:
-	explicit CScene_Test();
+	explicit CScene_Test(shared_ptr<DxDevice> _device);
 	virtual ~CScene_Test();
 
 public:

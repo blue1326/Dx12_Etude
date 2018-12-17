@@ -2,10 +2,11 @@
 #define Object_h__
 #include "stdHeaders.h"
 #include "Component.h"
-class CGameObject
+#include "DxDevice.h"
+class CGameObject :public std::enable_shared_from_this<CGameObject>
 {
 protected:
-	explicit CGameObject();
+	explicit CGameObject(shared_ptr<DxDevice> _device);
 	virtual ~CGameObject();
 public:
 	//CComponent
@@ -22,6 +23,7 @@ public:
 
 protected:
 	virtual void Free(void);
+	shared_ptr<DxDevice> m_DxDevice;
 };
 
 

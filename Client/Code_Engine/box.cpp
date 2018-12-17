@@ -225,6 +225,11 @@ void CBox::BuildPSO()
 	ThrowIfFailed(m_DxDevice->GetDevice()->CreateGraphicsPipelineState(&psoDesc, IID_PPV_ARGS(&m_PSO)));
 }
 
+void CBox::CreateUplaodBuffer()
+{
+	m_ElementByteSize = sizeof()
+}
+
 std::shared_ptr<CComponent> CBox::Clone()
 {
 	return this->shared_from_this();
