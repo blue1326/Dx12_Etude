@@ -46,6 +46,9 @@
     <Filter Include="01.ToEngine\01.Components">
       <UniqueIdentifier>{5e9d60ed-93fd-451a-88f6-743d24f47aaf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01.ToEngine\01.Components\00.BasicMesh">
+      <UniqueIdentifier>{2ef83b87-7ba0-4083-b7ee-625b1b801a45}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\WinAPI\API_Setup.cpp">
@@ -119,6 +122,18 @@
     </ClCompile>
     <ClCompile Include="..\Code\TestObject2.cpp">
       <Filter>02.toClient</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code_Engine\BasicMesh.cpp">
+      <Filter>01.ToEngine\01.Components\00.BasicMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code_Engine\BasicMesh_Crate.cpp">
+      <Filter>01.ToEngine\01.Components\00.BasicMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code_Engine\Material.cpp">
+      <Filter>01.ToEngine\01.Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Microsoft\DDSTextureLoader.cpp">
+      <Filter>01.ToEngine\00.Utility</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -226,6 +241,18 @@
     </ClInclude>
     <ClInclude Include="..\Code\TestObject2.h">
       <Filter>02.toClient</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code_Engine\BasicMesh.h">
+      <Filter>01.ToEngine\01.Components\00.BasicMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code_Engine\BasicMesh_Crate.h">
+      <Filter>01.ToEngine\01.Components\00.BasicMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code_Engine\Material.h">
+      <Filter>01.ToEngine\01.Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Microsoft\DDSTextureLoader.h">
+      <Filter>01.ToEngine\00.Utility</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -3,14 +3,15 @@
 #include "box.h"
 #include "Transform.h"
 #include "Renderer.h"
-
+#include "BasicMesh_Crate.h"
 //test
-#include "dxException.h"
+//#include "dxException.h"
 CTestObject2::CTestObject2(shared_ptr<DxDevice> _device)
 	: CGameObject::CGameObject(_device)
 	,pBox(nullptr)
 	, pTransform(nullptr)
 	, pRenderer(nullptr)
+	, pCrate(nullptr)
 {
 
 }
@@ -30,6 +31,9 @@ HRESULT CTestObject2::Init_GameObject(void)
 	((CBox*)pBox.get())->Init_Component();
 	pRenderer = CComponentHolder::GetInstance()->Clone_Component("Renderer");
 	
+	pCrate = CComponentHolder::GetInstance()->Clone_Component("Basic_Crate");
+
+
 	BuildDescriptorHeaps();
 	BuildConstantBuffers();
 
@@ -72,18 +76,20 @@ void CTestObject2::Render_GameObject()
 	ComPtr<ID3D12GraphicsCommandList> cmdList = m_DxDevice->GetCommandList();
 
 	
-	cmdList->SetPipelineState(dynamic_cast<CRenderer*>(pRenderer.get())->GetPSO().Get());
+	//cmdList->SetPipelineState(dynamic_cast<CRenderer*>(pRenderer.get())->GetPSO("opaquePSO").Get());
 
 	//ID3D12DescriptorHeap* descriptorHeaps[] = { m_CbvHeap.Get() };
 	//ID3D12DescriptorHeap* descriptorHeaps[] = { dynamic_cast<CBox*>(pBox.get())->GetCBVHeap().Get() };
 	ID3D12DescriptorHeap* descriptorHeaps[] = {m_CbvHeap.Get() };
 	cmdList->SetDescriptorHeaps(_countof(descriptorHeaps), descriptorHeaps);
 	cmdList->SetGraphicsRootSignature(dynamic_cast<CRenderer*>(pRenderer.get())->GetRootSignature().Get());
-	cmdList->IASetVertexBuffers(0, 1, &(dynamic_cast<CBox*>(pBox.get())->GetGeometry()->VertexBufferView()));
-	cmdList->IASetIndexBuffer(&(dynamic_cast<CBox*>(pBox.get())->GetGeometry()->IndexBufferView()));
+	cmdList->IASetVertexBuffers(0, 1, &(dynamic_cast<CBasicMesh_Crate*>(pCrate.get())->GetGeometry()->VertexBufferView()));
+	cmdList->IASetIndexBuffer(&(dynamic_cast<CBasicMesh_Crate*>(pCrate.get())->GetGeometry()->IndexBufferView()));
 	cmdList->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 	cmdList->SetGraphicsRootDescriptorTable(0, m_CbvHeap->GetGPUDescriptorHandleForHeapStart());
-	cmdList->DrawIndexedInstanced(dynamic_cast<CBox*>(pBox.get())->GetGeometry()->DrawArgs["box"].IndexCount,
+	/*cmdList->DrawIndexedInstanced(dynamic_cast<CBasicMesh_Crate*>(pCrate.get())->GetGeometry()->DrawArgs["box"].IndexCount,
+		1, 0, 0, 0);*/
+	cmdList->DrawIndexedInstanced(dynamic_cast<CBasicMesh_Crate*>(pCrate.get())->GetGeometry()->DrawArg.IndexCount,
 		1, 0, 0, 0);
 
 }

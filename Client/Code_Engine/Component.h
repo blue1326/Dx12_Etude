@@ -16,7 +16,6 @@ public:
 	virtual std::shared_ptr<CComponent> Clone()=0;
 	virtual void OnResize();
 
-
 	
 
 	

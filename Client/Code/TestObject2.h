@@ -24,6 +24,7 @@ private:
 	shared_ptr<CComponent> pBox;
 	shared_ptr<CComponent> pTransform;
 	shared_ptr<CComponent> pRenderer;
+	shared_ptr<CComponent> pCrate;
 private:
 	CTestObject2();
 };
