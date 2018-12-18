@@ -45,6 +45,14 @@ int CLayer::LastUpdate_Layer(const std::shared_ptr<CTimer> t)
 	return 0;
 }
 
+void CLayer::OnResize()
+{
+	for (const auto &j : m_ObjList)
+	{
+		j->OnResize();
+	}
+}
+
 void CLayer::Free(void)
 {
 	m_ObjList.clear();

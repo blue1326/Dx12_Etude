@@ -43,6 +43,9 @@
     <Filter Include="01.ToEngine\00.Utility">
       <UniqueIdentifier>{0144700f-9830-4704-96ef-2b2d112431a9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01.ToEngine\01.Components">
+      <UniqueIdentifier>{5e9d60ed-93fd-451a-88f6-743d24f47aaf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\WinAPI\API_Setup.cpp">
@@ -54,13 +57,7 @@
     <ClCompile Include="..\Code\API_Derived.cpp">
       <Filter>00.for Windows\WinApi_Derived</Filter>
     </ClCompile>
-    <ClCompile Include="..\Code_Engine\Renderer.cpp">
-      <Filter>01.ToEngine</Filter>
-    </ClCompile>
     <ClCompile Include="..\Code_Engine\Scene.cpp">
-      <Filter>01.ToEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Code_Engine\Component.cpp">
       <Filter>01.ToEngine</Filter>
     </ClCompile>
     <ClCompile Include="..\Code_Engine\DxDevice.cpp">
@@ -90,29 +87,38 @@
     <ClCompile Include="..\Code_Engine\ComponentHolder.cpp">
       <Filter>01.ToEngine\00.Utility</Filter>
     </ClCompile>
-    <ClCompile Include="..\Code_Engine\Transform.cpp">
-      <Filter>01.ToEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Code_Engine\Camera.cpp">
-      <Filter>01.ToEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Code_Engine\MathHelper.cpp">
-      <Filter>01.ToEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Code_Engine\TestObject.cpp">
-      <Filter>02.toClient</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Code_Engine\TestObject_Camera.cpp">
-      <Filter>02.toClient</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Code_Engine\box.cpp">
-      <Filter>01.ToEngine</Filter>
-    </ClCompile>
     <ClCompile Include="..\Code_Engine\MeshGeometry.cpp">
       <Filter>01.ToEngine</Filter>
     </ClCompile>
-    <ClCompile Include="..\Code_Engine\BufferCreater.cpp">
-      <Filter>01.ToEngine</Filter>
+    <ClCompile Include="..\Code_Engine\MathHelper.cpp">
+      <Filter>01.ToEngine\00.Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code_Engine\BufferUtility.cpp">
+      <Filter>01.ToEngine\00.Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code_Engine\box.cpp">
+      <Filter>01.ToEngine\01.Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code_Engine\Camera.cpp">
+      <Filter>01.ToEngine\01.Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code_Engine\Component.cpp">
+      <Filter>01.ToEngine\01.Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code_Engine\Renderer.cpp">
+      <Filter>01.ToEngine\01.Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code_Engine\Transform.cpp">
+      <Filter>01.ToEngine\01.Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\TestObject_Camera.cpp">
+      <Filter>02.toClient</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\TestObject.cpp">
+      <Filter>02.toClient</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\TestObject2.cpp">
+      <Filter>02.toClient</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -152,13 +158,7 @@
     <ClInclude Include="..\Headers\Functor.h">
       <Filter>99.Headers</Filter>
     </ClInclude>
-    <ClInclude Include="..\Code_Engine\Renderer.h">
-      <Filter>01.ToEngine</Filter>
-    </ClInclude>
     <ClInclude Include="..\Code_Engine\Scene.h">
-      <Filter>01.ToEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Code_Engine\Component.h">
       <Filter>01.ToEngine</Filter>
     </ClInclude>
     <ClInclude Include="..\Code_Engine\DxDevice.h">
@@ -191,29 +191,41 @@
     <ClInclude Include="..\Headers\Templates.h">
       <Filter>99.Headers</Filter>
     </ClInclude>
-    <ClInclude Include="..\Code_Engine\Transform.h">
-      <Filter>01.ToEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Code_Engine\Camera.h">
-      <Filter>01.ToEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Code_Engine\MathHelper.h">
-      <Filter>01.ToEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Code_Engine\TestObject.h">
-      <Filter>02.toClient</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Code_Engine\TestObject_Camera.h">
-      <Filter>02.toClient</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Code_Engine\box.h">
-      <Filter>01.ToEngine</Filter>
-    </ClInclude>
     <ClInclude Include="..\Code_Engine\MeshGeometry.h">
       <Filter>01.ToEngine</Filter>
     </ClInclude>
-    <ClInclude Include="..\Code_Engine\BufferCreater.h">
-      <Filter>01.ToEngine</Filter>
+    <ClInclude Include="..\Code_Engine\MathHelper.h">
+      <Filter>01.ToEngine\00.Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code_Engine\BufferUtility.h">
+      <Filter>01.ToEngine\00.Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code_Engine\box.h">
+      <Filter>01.ToEngine\01.Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code_Engine\Camera.h">
+      <Filter>01.ToEngine\01.Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code_Engine\Component.h">
+      <Filter>01.ToEngine\01.Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code_Engine\Renderer.h">
+      <Filter>01.ToEngine\01.Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code_Engine\Transform.h">
+      <Filter>01.ToEngine\01.Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\Structs.h">
+      <Filter>99.Headers\00.separated_header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code\TestObject.h">
+      <Filter>02.toClient</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code\TestObject_Camera.h">
+      <Filter>02.toClient</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code\TestObject2.h">
+      <Filter>02.toClient</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

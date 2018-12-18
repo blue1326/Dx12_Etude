@@ -44,10 +44,27 @@ private:
 	void CreateRtvAndDsvDescriptorHeaps();
 
 
-private:
+private: ///private
 	ID3D12Resource * CurrentBackBuffer()const;
 	D3D12_CPU_DESCRIPTOR_HANDLE CurrentBackBufferView()const;
 	D3D12_CPU_DESCRIPTOR_HANDLE DepthStencilView()const;
+	////testcode
+	//void SetCurrentBackBuffer(int _int)
+	//{
+	//	m_CurrBackBuffer = _int;
+	//}
+	//int GetSwapChainBufferCnt()
+	//{
+	//	return SwapChainBufferCount;
+	//}
+	//int GetCurrentBackBuffer()
+	//{
+	//	return m_CurrBackBuffer;
+	//}
+	//Microsoft::WRL::ComPtr<IDXGISwapChain> GetSwapChain()
+	//{
+	//	return m_SwapChain;
+	//}
 
 public:
 	void FlushCommandQueue();
@@ -113,6 +130,15 @@ private:
 	DXGI_FORMAT m_BackBufferFormat = DXGI_FORMAT_R8G8B8A8_UNORM;
 	DXGI_FORMAT m_DepthStencilFormat = DXGI_FORMAT_D24_UNORM_S8_UINT;
 
+public:
+	D3D12_VIEWPORT GetScreenViewport()
+	{
+		return m_ScreenViewport;
+	}
+	D3D12_RECT GetScissorRect()
+	{
+		return m_ScissorRect;
+	}
 public:
 	DXGI_FORMAT GetBackBufferFormat()
 	{

@@ -3,17 +3,18 @@
 #include "Renderer.h"
 #include "MathHelper.h"
 CCamera::CCamera(const shared_ptr<DxDevice> _device)
-	: m_fFovy(0.f)
+	:m_DxDevice(_device)
+	, m_fFovy(0.f)
 	, m_fAspect(0.f)
 	, m_fNear(0.f)
 	, m_fFar(0.f)
-	,m_d3dDevice(_device)
 {
-	m_CType = COMP_STANDALONE;
+	
 }
 
 CCamera::CCamera(const CCamera& rhs)
-	:m_vEye(rhs.m_vEye)
+	:m_DxDevice(rhs.m_DxDevice)
+	,m_vEye(rhs.m_vEye)
 	,m_vAt(rhs.m_vAt)
 	,m_vUp(rhs.m_vUp)
 	,m_fFovy(rhs.m_fFovy)
@@ -23,9 +24,8 @@ CCamera::CCamera(const CCamera& rhs)
 	,m_World(rhs.m_World)
 	,m_View(rhs.m_View)
 	,m_Proj(rhs.m_Proj)
-	,m_d3dDevice(rhs.m_d3dDevice)
 {
-	m_CType = COMP_STANDALONE;
+	
 }
 
 CCamera::~CCamera()
@@ -35,10 +35,12 @@ CCamera::~CCamera()
 
 HRESULT CCamera::Init_Component()
 {
-	XMFLOAT4 initValue = XMFLOAT4(0, 0, 0,0);
-	m_vEye = XMLoadFloat4(&initValue);
-	m_vAt = XMLoadFloat4(&initValue);
-	m_vUp = XMLoadFloat4(&initValue);
+	
+	
+	m_vEye = XMVectorSet(0, 0, 0, 0);
+		//XMLoadFloat4(&initValue);
+	m_vAt = XMVectorZero();
+	m_vUp = XMVectorSet(0, 1, 0, 0);
 	m_World = XMMatrixIdentity();
 	m_View = XMMatrixIdentity();
 	m_Proj = XMMatrixIdentity();
@@ -49,18 +51,10 @@ HRESULT CCamera::Init_Component()
 
 void CCamera::Update_Component(const std::shared_ptr<CTimer> t)
 {
-	
-
+	                                   //pos   target  up
 	XMMATRIX m_View = XMMatrixLookAtLH(m_vEye, m_vAt, m_vUp);
 	g_matView = m_View;
-	XMMATRIX worldViewProj = m_World * m_View * m_Proj;
-
-
 	
-	///나중에 옮길 코드
-	/*ObjectConstants objConstants;
-	XMStoreFloat4x4(&objConstants.WorldViewProj, XMMatrixTranspose(worldViewProj));
-	((CRenderer*)(CComponentHolder::GetInstance()->Get_Component("Renderer").get()))->SetObjConst(objConstants);*/
 }
 
 std::shared_ptr<CComponent> CCamera::Clone()

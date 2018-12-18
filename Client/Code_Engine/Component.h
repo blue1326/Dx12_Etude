@@ -1,12 +1,11 @@
 #ifndef Component_h__
 #define Component_h__
 #include "stdHeaders.h"
+class DxDevice;
 class CTimer;
 class CComponent : public std::enable_shared_from_this<CComponent>
 {
-public:
-	enum COMPONENT_TYPE { COMP_STANDALONE, COMP_SHARED };
-public:
+protected:
 	explicit CComponent();
 	explicit CComponent(const CComponent& rhs) = delete;
 	virtual ~CComponent();
@@ -17,9 +16,8 @@ public:
 	virtual std::shared_ptr<CComponent> Clone()=0;
 	virtual void OnResize();
 
-protected:
-	COMPONENT_TYPE m_CType;
 
+	
 
 	
 		

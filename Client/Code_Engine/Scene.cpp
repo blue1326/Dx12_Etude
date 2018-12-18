@@ -68,11 +68,11 @@ HRESULT CScene::Add_Layer(const wchar_t* pLayerTag, shared_ptr<CLayer> _Layer)
 
 void CScene::OnResize()
 {
-	
-	//for (const auto &j : m_Objects)
-	//{
-	//		j->OnResize();
-	//}
+	for (const auto &j : m_mapLayer)
+	{
+		j.second->OnResize();
+		
+	}
 }
 
 std::shared_ptr<CLayer> CScene::Find_Layer(const wchar_t* pLayerTag)

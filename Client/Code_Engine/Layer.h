@@ -11,7 +11,7 @@ public:
 	HRESULT Ready_Layer(void);
 	int Update_Layer(const std::shared_ptr<CTimer> t);
 	int LastUpdate_Layer(const std::shared_ptr<CTimer> t);
-
+	void OnResize();
 
 public:
 	inline void Add_GameObject(shared_ptr<CGameObject> _Obj)
