@@ -71,7 +71,7 @@ void CTestObject::Render_GameObject()
 	ComPtr<ID3D12GraphicsCommandList> cmdList = m_DxDevice->GetCommandList();
 
 	
-	//cmdList->SetPipelineState(dynamic_cast<CRenderer*>(pRenderer.get())->GetPSO("opaquePSO").Get());
+	cmdList->SetPipelineState(dynamic_cast<CRenderer*>(pRenderer.get())->GetPSO().Get());
 
 	//ID3D12DescriptorHeap* descriptorHeaps[] = { m_CbvHeap.Get() };
 	//ID3D12DescriptorHeap* descriptorHeaps[] = { dynamic_cast<CBox*>(pBox.get())->GetCBVHeap().Get() };

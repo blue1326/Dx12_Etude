@@ -6,7 +6,6 @@ CGameObject::CGameObject(shared_ptr<DxDevice> _device)
 	:m_DxDevice(_device)
 	,m_ElementByteSize(0)
 	,m_MappedData(nullptr)
-	,m_CbvHeap(nullptr)
 {
 
 }

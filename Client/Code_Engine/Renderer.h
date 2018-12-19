@@ -44,7 +44,7 @@ private:
 private:
 	void BuildRootSignature();
 	void BuildShadersAndInputLayout();
-	void BuildPSOs();
+	void BuildPSO();
 private://rootsignature
 	ComPtr<ID3D12RootSignature> m_RootSignature;
 private://shader
@@ -53,20 +53,11 @@ private://shader
 	std::vector<D3D12_INPUT_ELEMENT_DESC> m_InputLayout;
 private://pso
 	ComPtr<ID3D12PipelineState> m_PSO;
-	typedef unordered_map < string, ComPtr<ID3D12PipelineState>> MAP_PSOS;
-	MAP_PSOS m_PSOs;
-
-	typedef unordered_map<string, ComPtr<ID3DBlob>> SHADERS;
-	SHADERS m_Shaders;
 
 public:
 	ComPtr<ID3D12PipelineState> GetPSO()
 	{
 		return m_PSO;
-	}
-	ComPtr<ID3D12PipelineState> GetPSO(string _str)
-	{
-		return m_PSOs[_str];
 	}
 	ComPtr<ID3D12RootSignature> GetRootSignature()
 	{
