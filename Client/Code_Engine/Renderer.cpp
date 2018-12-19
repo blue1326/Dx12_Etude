@@ -19,7 +19,7 @@ HRESULT CRenderer::Init_Component()
 
 	BuildRootSignature();
 	BuildShadersAndInputLayout();
-	BuildPSOs();
+	BuildPSO();
 
 	// Execute the initialization commands.
 	ThrowIfFailed(m_DxDevice->GetCommandList()->Close());
@@ -44,8 +44,11 @@ void CRenderer::Render_GameObject(void)
 
 void CRenderer::RenderNoneAlpha(void)
 {
+<<<<<<< HEAD
 	m_DxDevice->GetCommandList().Get()->SetPipelineState(GetPSO("opaque").Get());
 	//m_DxDevice->GetCommandList().Get()->SetPipelineState(GetPSO("opaque_wf").Get());
+=======
+>>>>>>> parent of 2683f7f... minorupdate
 	for (const auto &j : m_RenderList[RENDER_NONEALPHA])
 	{
 		j->Render_GameObject();
@@ -129,16 +132,25 @@ void CRenderer::BuildRootSignature()
 
 void CRenderer::BuildShadersAndInputLayout()
 {
+<<<<<<< HEAD
 	m_Shaders["stdVS"] = CShaderCompiler::CompileShader(L"../Shaders/Default.hlsl", nullptr, "VS", "vs_5_0");
 	//m_vsByteCode = CShaderCompiler::CompileShader(L"../Shaders/Box_color.hlsl", nullptr, "VS", "vs_5_0");
 	m_Shaders["opaquePS"] = CShaderCompiler::CompileShader(L"../Shaders/Default.hlsl", nullptr, "PS", "ps_5_0");
 	//m_psByteCode = CShaderCompiler::CompileShader(L"../Shaders/Box_color.hlsl", nullptr, "PS", "ps_5_0");
+=======
+	m_vsByteCode = CShaderCompiler::CompileShader(L"../Shaders/Box_color.hlsl", nullptr, "VS", "vs_5_0");
+	m_psByteCode = CShaderCompiler::CompileShader(L"../Shaders/Box_color.hlsl", nullptr, "PS", "ps_5_0");
+>>>>>>> parent of 2683f7f... minorupdate
 
 	m_InputLayout =
 	{
 		{ "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0 },
+<<<<<<< HEAD
 		{ "NORMAL", 0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0, 12, D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0 },
 		{ "TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT, 0, 24, D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0 }
+=======
+		{ "COLOR", 0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0, 12, D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0 }
+>>>>>>> parent of 2683f7f... minorupdate
 	};
 	/*m_InputLayout =
 	{
@@ -148,7 +160,7 @@ void CRenderer::BuildShadersAndInputLayout()
 	};*/
 }
 
-void CRenderer::BuildPSOs()
+void CRenderer::BuildPSO()
 {
 	D3D12_GRAPHICS_PIPELINE_STATE_DESC psoDesc;
 	ZeroMemory(&psoDesc, sizeof(D3D12_GRAPHICS_PIPELINE_STATE_DESC));
@@ -156,13 +168,13 @@ void CRenderer::BuildPSOs()
 	psoDesc.pRootSignature = m_RootSignature.Get();
 	psoDesc.VS =
 	{
-		reinterpret_cast<BYTE*>(m_Shaders["stdVS"]->GetBufferPointer()),
-		m_Shaders["stdVS"]->GetBufferSize()
+		reinterpret_cast<BYTE*>(m_vsByteCode->GetBufferPointer()),
+		m_vsByteCode->GetBufferSize()
 	};
 	psoDesc.PS =
 	{
-		reinterpret_cast<BYTE*>(m_Shaders["opaquePS"]->GetBufferPointer()),
-		m_Shaders["opaquePS"]->GetBufferSize()
+		reinterpret_cast<BYTE*>(m_psByteCode->GetBufferPointer()),
+		m_psByteCode->GetBufferSize()
 	};
 	psoDesc.RasterizerState = CD3DX12_RASTERIZER_DESC(D3D12_DEFAULT);
 	psoDesc.BlendState = CD3DX12_BLEND_DESC(D3D12_DEFAULT);
@@ -175,11 +187,7 @@ void CRenderer::BuildPSOs()
 	psoDesc.SampleDesc.Count = m_DxDevice->Get4xMsaaState() ? 4 : 1;
 	psoDesc.SampleDesc.Quality = m_DxDevice->Get4xMsaaState() ? (m_DxDevice->Get4xMsaaQuality() - 1) : 0;
 	psoDesc.DSVFormat = m_DxDevice->GetDepthStencilBufferFormat();
-	ThrowIfFailed(m_DxDevice->GetDevice()->CreateGraphicsPipelineState(&psoDesc, IID_PPV_ARGS(&m_PSOs["opaque"])));
-
-	D3D12_GRAPHICS_PIPELINE_STATE_DESC opaqueWireframePsoDesc = psoDesc;
-	opaqueWireframePsoDesc.RasterizerState.FillMode = D3D12_FILL_MODE_WIREFRAME;
-	ThrowIfFailed(m_DxDevice->GetDevice()->CreateGraphicsPipelineState(&opaqueWireframePsoDesc, IID_PPV_ARGS(&m_PSOs["opaque_wf"])));
+	ThrowIfFailed(m_DxDevice->GetDevice()->CreateGraphicsPipelineState(&psoDesc, IID_PPV_ARGS(&m_PSO)));
 }
 
 std::array<const CD3DX12_STATIC_SAMPLER_DESC, 6> CRenderer::GetStaticSamplers()

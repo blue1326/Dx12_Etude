@@ -6,8 +6,11 @@ CGameObject::CGameObject(shared_ptr<DxDevice> _device)
 	:m_DxDevice(_device)
 	,m_ElementByteSize(0)
 	,m_MappedData(nullptr)
+<<<<<<< HEAD
 	,m_CbvHeap(nullptr)
 	,m_DescriptorSize(0)
+=======
+>>>>>>> parent of 2683f7f... minorupdate
 {
 
 }

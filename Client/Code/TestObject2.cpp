@@ -3,18 +3,24 @@
 #include "box.h"
 #include "Transform.h"
 #include "Renderer.h"
+<<<<<<< HEAD
 #include "BasicMesh_Crate.h"
 #include "Material.h"
+=======
+>>>>>>> parent of 2683f7f... minorupdate
 
 //test
-//#include "dxException.h"
+#include "dxException.h"
 CTestObject2::CTestObject2(shared_ptr<DxDevice> _device)
 	: CGameObject::CGameObject(_device)
 	,pBox(nullptr)
 	, pTransform(nullptr)
 	, pRenderer(nullptr)
+<<<<<<< HEAD
 	, pCrate(nullptr)
 	, pMaterial(nullptr)
+=======
+>>>>>>> parent of 2683f7f... minorupdate
 {
 
 }
@@ -35,12 +41,15 @@ HRESULT CTestObject2::Init_GameObject(void)
 	((CBox*)pBox.get())->Init_Component();
 	pRenderer = CComponentHolder::GetInstance()->Clone_Component("Renderer");
 	
+<<<<<<< HEAD
 	pCrate = CComponentHolder::GetInstance()->Clone_Component("Basic_Crate");
 
 	pMaterial = CComponentHolder::GetInstance()->Clone_Component("Tex_Crate");
 	static_cast<CMaterial*>(pMaterial.get())->Ready_Component();
 
 	//Init_Start();
+=======
+>>>>>>> parent of 2683f7f... minorupdate
 	BuildDescriptorHeaps();
 	static_cast<CMaterial*>(pMaterial.get())->SetUpDescripterHeap(m_CbvHeap);
 	BuildConstantBuffers();
@@ -139,11 +148,16 @@ void CTestObject2::Render_GameObject()
 	ComPtr<ID3D12GraphicsCommandList> cmdList = m_DxDevice->GetCommandList();
 
 	
+<<<<<<< HEAD
+=======
+	cmdList->SetPipelineState(dynamic_cast<CRenderer*>(pRenderer.get())->GetPSO().Get());
+>>>>>>> parent of 2683f7f... minorupdate
 
 	ID3D12DescriptorHeap* descriptorHeaps[] = {m_CbvHeap.Get() };
 	cmdList->SetDescriptorHeaps(_countof(descriptorHeaps), descriptorHeaps);
 
 	cmdList->SetGraphicsRootSignature(dynamic_cast<CRenderer*>(pRenderer.get())->GetRootSignature().Get());
+<<<<<<< HEAD
 	
 
 	auto passCB = m_UploadBuffer_pass.Get();
@@ -171,6 +185,13 @@ void CTestObject2::Render_GameObject()
 	/*cmdList->DrawIndexedInstanced(dynamic_cast<CBasicMesh_Crate*>(pCrate.get())->GetGeometry()->DrawArgs["box"].IndexCount,
 		1, 0, 0, 0);*/
 	cmdList->DrawIndexedInstanced(dynamic_cast<CBasicMesh_Crate*>(pCrate.get())->GetGeometry()->DrawArg.IndexCount,
+=======
+	cmdList->IASetVertexBuffers(0, 1, &(dynamic_cast<CBox*>(pBox.get())->GetGeometry()->VertexBufferView()));
+	cmdList->IASetIndexBuffer(&(dynamic_cast<CBox*>(pBox.get())->GetGeometry()->IndexBufferView()));
+	cmdList->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+	cmdList->SetGraphicsRootDescriptorTable(0, m_CbvHeap->GetGPUDescriptorHandleForHeapStart());
+	cmdList->DrawIndexedInstanced(dynamic_cast<CBox*>(pBox.get())->GetGeometry()->DrawArgs["box"].IndexCount,
+>>>>>>> parent of 2683f7f... minorupdate
 		1, 0, 0, 0);
 
 }

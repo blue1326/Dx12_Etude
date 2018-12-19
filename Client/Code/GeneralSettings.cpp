@@ -12,8 +12,7 @@
 #include "Camera.h"
 #include "Renderer.h" //나중에 대체
 #include "box.h"
-#include "BasicMesh_Crate.h"
-#include "Material.h"
+
 CGeneralSettings::CGeneralSettings(const std::shared_ptr<DxDevice> Device, const std::shared_ptr<CTimer> Timer1, const std::shared_ptr<CTimer> Timer2)
 	: m_DxDevice(Device), m_Timer1(move(Timer1)), m_Timer2(move(Timer2)),m_fTimeAcc(0.f),m_CallPerSec(0.f)
 {
@@ -56,22 +55,19 @@ HRESULT CGeneralSettings::InitScene()
 HRESULT CGeneralSettings::InitComponents()
 {
 	CComponentHolder::GetInstance()->Reserve_ComponentHolder(20);
-
 	shared_ptr<CComponent> inst = std::shared_ptr<CComponent>(new CRenderer(m_DxDevice));
 	if(FAILED(inst->Init_Component()))
 		return E_FAIL;
 	CComponentHolder::GetInstance()->AddOriginComponent("Renderer", inst);
-
 	inst.reset(new CTransform(m_DxDevice));
 	CComponentHolder::GetInstance()->AddOriginComponent("Transform", inst);
-
 	inst.reset(new CCamera(m_DxDevice));
 	CComponentHolder::GetInstance()->AddOriginComponent("Camera", inst);
-
 	inst.reset(new CBox(m_DxDevice));
 	if (FAILED(inst->Init_Component()))
 		return E_FAIL;
 	CComponentHolder::GetInstance()->AddOriginComponent("Box", inst);
+<<<<<<< HEAD
 
 	inst.reset(new CBasicMesh_Crate(m_DxDevice));
 	if (FAILED(inst->Init_Component()))
@@ -91,6 +87,44 @@ HRESULT CGeneralSettings::InitComponents()
 	if (FAILED(inst->Init_Component()))
 		return E_FAIL;
 	CComponentHolder::GetInstance()->AddOriginComponent("Tex_Crate", inst);
+=======
+	//CComponentHolder::GetInstance()->Reserve_ComponentHolder(20);
+
+	//std::shared_ptr<CComponent> inst = std::shared_ptr<CComponent>(new CRenderer(m_DxDevice));
+	//CComponentHolder::GetInstance()->AddOriginComponent("Renderer", inst);
+	//inst.reset(new CTransform(m_DxDevice->GetDevice()));
+	//CComponentHolder::GetInstance()->AddOriginComponent("Transform", inst);
+	////m_DxDevice->GetDevice()
+	//inst.reset(new CCamera(m_DxDevice->GetDevice()));
+	//CComponentHolder::GetInstance()->AddOriginComponent("Camera", inst);
+	//inst.reset(new CLand(m_DxDevice->GetDevice()));
+	//CComponentHolder::GetInstance()->AddOriginComponent("Land", inst);
+	//inst.reset(new CWave(m_DxDevice->GetDevice(),m_DxDevice->GetDxgiFactory()));
+	//CComponentHolder::GetInstance()->AddOriginComponent("Wave", inst);
+	//if (!CComponentHolder::GetInstance()->InitComponents())
+	//	return false;
+
+
+	//m_OriginalComponents.insert(OC::value_type("Renderer", inst));
+	//m_OriginalRenderer = inst;
+	//
+	////m_OriginalComponents.insert(OC::value_type("Transform", inst));
+	//for (const auto &j : m_OriginalComponents)
+	//{
+	//	j.second->Init_Component();
+	//	//std::shared_ptr<CComponent> tmp1 = j.second->Clone();
+	//	//std::shared_ptr<CComponent> tmp2 = j.second->Clone();
+	//	//std::shared_ptr<CComponent> tmp3 = j.second->Clone();
+	//	//std::shared_ptr<CComponent> tmp4 = j.second->Clone();
+	//	//int origin = j.second.use_count();
+	//	//int t1 = tmp1.use_count();
+	//	//int t2 = tmp2.use_count();
+	//	//int t3 = tmp3.use_count();
+	//	//int t4 = tmp4.use_count();
+	//	//int x = 0;
+	//	////testcode
+	//}
+>>>>>>> parent of 2683f7f... minorupdate
 	return S_OK;
 }
 

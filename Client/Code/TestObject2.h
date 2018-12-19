@@ -23,12 +23,15 @@ private:
 	shared_ptr<CComponent> pBox;
 	shared_ptr<CComponent> pTransform;
 	shared_ptr<CComponent> pRenderer;
+<<<<<<< HEAD
 	shared_ptr<CComponent> pCrate;
 	shared_ptr<CComponent> pMaterial;
 
 private:
 	void UpdatePassConstant(const std::shared_ptr<CTimer> t);
 	void UpdateOjbectConstant();
+=======
+>>>>>>> parent of 2683f7f... minorupdate
 private:
 	CTestObject2();
 };

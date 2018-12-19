@@ -10,8 +10,6 @@ struct Vertex
 {
 	XMFLOAT3 Pos;
 	XMFLOAT4 Color;
-	XMFLOAT3 Normal;
-	XMFLOAT2 TexC;
 };
 
 struct ObjectConstants
@@ -21,6 +19,7 @@ struct ObjectConstants
 };
 
 
+<<<<<<< HEAD
 struct VTX
 {
 	VTX() {}
@@ -158,4 +157,6 @@ struct PassConstants
 	Light Lights[MaxLights];
 };
 
+=======
+>>>>>>> parent of 2683f7f... minorupdate
 #endif // Structs_h__
