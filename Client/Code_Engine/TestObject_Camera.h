@@ -9,7 +9,7 @@
 class CTestObject_Camera : public CGameObject
 {
 public:
-	explicit	CTestObject_Camera(shared_ptr<DxDevice> _device);
+	explicit CTestObject_Camera(shared_ptr<DxDevice> _device);
 	~CTestObject_Camera();
 public:
 	virtual HRESULT Init_GameObject(void)override;

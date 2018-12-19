@@ -150,14 +150,11 @@
     <ClCompile Include="..\..\Microsoft\DDSTextureLoader.cpp" />
     <ClCompile Include="..\Code\API_Derived.cpp" />
     <ClCompile Include="..\Code\GeneralSettings.cpp" />
-    <ClCompile Include="..\Code\TestObject.cpp" />
-    <ClCompile Include="..\Code\TestObject2.cpp" />
-    <ClCompile Include="..\Code\TestObject_Camera.cpp" />
     <ClCompile Include="..\Code\testScene.cpp" />
     <ClCompile Include="..\Code_Engine\BasicMesh.cpp" />
     <ClCompile Include="..\Code_Engine\BasicMesh_Crate.cpp" />
     <ClCompile Include="..\Code_Engine\box.cpp" />
-    <ClCompile Include="..\Code_Engine\BufferUtility.cpp" />
+    <ClCompile Include="..\Code_Engine\BufferCreater.cpp" />
     <ClCompile Include="..\Code_Engine\Camera.cpp" />
     <ClCompile Include="..\Code_Engine\Component.cpp" />
     <ClCompile Include="..\Code_Engine\ComponentHolder.cpp" />
@@ -171,6 +168,8 @@
     <ClCompile Include="..\Code_Engine\Renderer.cpp" />
     <ClCompile Include="..\Code_Engine\Scene.cpp" />
     <ClCompile Include="..\Code_Engine\ShaderCompiler.cpp" />
+    <ClCompile Include="..\Code_Engine\TestObject.cpp" />
+    <ClCompile Include="..\Code_Engine\TestObject_Camera.cpp" />
     <ClCompile Include="..\Code_Engine\Timer.cpp" />
     <ClCompile Include="..\Code_Engine\Transform.cpp" />
     <ClCompile Include="..\WinAPI\API_Setup.cpp" />
@@ -180,14 +179,11 @@
     <ClInclude Include="..\..\Microsoft\DDSTextureLoader.h" />
     <ClInclude Include="..\Code\API_Derived.h" />
     <ClInclude Include="..\Code\GeneralSettings.h" />
-    <ClInclude Include="..\Code\TestObject.h" />
-    <ClInclude Include="..\Code\TestObject2.h" />
-    <ClInclude Include="..\Code\TestObject_Camera.h" />
     <ClInclude Include="..\Code\testScene.h" />
     <ClInclude Include="..\Code_Engine\BasicMesh.h" />
     <ClInclude Include="..\Code_Engine\BasicMesh_Crate.h" />
     <ClInclude Include="..\Code_Engine\box.h" />
-    <ClInclude Include="..\Code_Engine\BufferUtility.h" />
+    <ClInclude Include="..\Code_Engine\BufferCreater.h" />
     <ClInclude Include="..\Code_Engine\Camera.h" />
     <ClInclude Include="..\Code_Engine\Component.h" />
     <ClInclude Include="..\Code_Engine\ComponentHolder.h" />
@@ -201,6 +197,8 @@
     <ClInclude Include="..\Code_Engine\Renderer.h" />
     <ClInclude Include="..\Code_Engine\Scene.h" />
     <ClInclude Include="..\Code_Engine\ShaderCompiler.h" />
+    <ClInclude Include="..\Code_Engine\TestObject.h" />
+    <ClInclude Include="..\Code_Engine\TestObject_Camera.h" />
     <ClInclude Include="..\Code_Engine\Timer.h" />
     <ClInclude Include="..\Code_Engine\Transform.h" />
     <ClInclude Include="..\Headers\d3dHeaders.h" />
@@ -210,7 +208,6 @@
     <ClInclude Include="..\Headers\stdHeaders.h" />
     <ClInclude Include="..\Headers\STL.h" />
     <ClInclude Include="..\Headers\stream.h" />
-    <ClInclude Include="..\Headers\Structs.h" />
     <ClInclude Include="..\Headers\Templates.h" />
     <ClInclude Include="..\Headers\unknown.h" />
     <ClInclude Include="..\Headers\Utilitys.h" />

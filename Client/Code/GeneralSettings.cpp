@@ -106,7 +106,6 @@ void CGeneralSettings::Last_Update()
 {
 
 	m_Scene->LastUpdate_Scene(m_Timer1);
-	//system("cls");
 	
 }
 
@@ -132,7 +131,7 @@ void CGeneralSettings::OnResize()
 {
 	if(g_DeviceInitState)
 		m_DxDevice->OnResize();
-	m_Scene->OnResize();
+	//m_Scene->OnResize();
 }
 //////////////////////////////////////////////////////////for TimerMethod
 std::shared_ptr<CTimer> CGeneralSettings::GetTimer(TimerDef td)

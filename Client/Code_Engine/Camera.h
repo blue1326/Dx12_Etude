@@ -15,7 +15,7 @@ public:
 	virtual HRESULT Init_Component()override;
 	virtual void Update_Component(const std::shared_ptr<CTimer> t)override;
 	virtual std::shared_ptr<CComponent> Clone()override;
-public:
+private:
 	virtual void OnResize()override;
 protected:
 	
@@ -41,7 +41,7 @@ public:
 	void SetWorld(XMMATRIX matWorld);
 
 private:
-	const shared_ptr<DxDevice> m_DxDevice;
+	const shared_ptr<DxDevice> m_d3dDevice;
 };
 
 

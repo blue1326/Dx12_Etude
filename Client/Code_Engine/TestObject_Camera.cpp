@@ -21,7 +21,7 @@ HRESULT CTestObject_Camera::Init_GameObject(void)
 {
 	pTransform = CComponentHolder::GetInstance()->Clone_Component("Transform");
 	((CTransform*)pTransform.get())->Init_Component();
-	((CTransform*)pTransform.get())->SetPosition(4, -3, 3);
+	((CTransform*)pTransform.get())->SetPosition(1, 1, 1);
 	pCamera = CComponentHolder::GetInstance()->Clone_Component("Camera");
 	((CCamera*)pCamera.get())->Init_Component();
 	return S_OK;
@@ -29,9 +29,14 @@ HRESULT CTestObject_Camera::Init_GameObject(void)
 
 int CTestObject_Camera::Update_GameObject(const std::shared_ptr<CTimer> t)
 {
-	dynamic_cast<CCamera*>(pCamera.get())->SetEye(((CTransform*)pTransform.get())->GetPosition());
-	dynamic_cast<CCamera*>(pCamera.get())->Update_Component(t);
-	
+	XMVECTOR tmp = ((CTransform*)pTransform.get())->GetPosition();
+	//it is debug code
+	//cout << "is camera transform" << endl;
+	//cout << "x :" << XMVectorGetX(tmp) <<endl;
+	//cout << "y :" << XMVectorGetY(tmp) << endl;
+	//cout << "z :" << XMVectorGetZ(tmp) << endl;
+	//cout << "x :" << XMVectorGetW(tmp) << endl;
+	//
 	return 0;
 }
 
@@ -49,6 +54,6 @@ void CTestObject_Camera::Render_GameObject()
 
 void CTestObject_Camera::OnResize()
 {
-	dynamic_cast<CCamera*>(pCamera.get())->OnResize();
+
 }
 

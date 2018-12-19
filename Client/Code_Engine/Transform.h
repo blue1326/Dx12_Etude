@@ -37,14 +37,11 @@ public:
 	XMVECTOR GetDirection();
 	void SetPosition(XMVECTOR vPos);
 	void SetPosition(float PosX, float PosY, float PosZ);
-	void SetScale(XMVECTOR vScale);
-	void SetScale(float scaleX, float scaleY, float scaleZ);
-	void SetScale(float scaleXYZ);
 	XMVECTOR GetPosition();
 
 
 private:
-	const shared_ptr<DxDevice> m_DxDevice;
+	const shared_ptr<DxDevice> m_d3dDevice;
 
 };
 #endif // Transform_h__

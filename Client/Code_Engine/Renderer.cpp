@@ -1,11 +1,9 @@
 #include "Renderer.h"
 #include "dxException.h"
-#include "ShaderCompiler.h"
-CRenderer::CRenderer(const std::shared_ptr<DxDevice> _device)
-	:m_DxDevice(_device)
-	,m_RootSignature(nullptr)
+CRenderer::CRenderer(const std::shared_ptr<DxDevice> Device)
+	:m_DxDevice(Device)
 {
-	
+	m_CType = COMP_SHARED;
 }
 
 CRenderer::~CRenderer()
@@ -15,6 +13,9 @@ CRenderer::~CRenderer()
 
 HRESULT CRenderer::Init_Component()
 {
+<<<<<<< HEAD
+	
+=======
 	ThrowIfFailed(m_DxDevice->GetCommandList()->Reset(m_DxDevice->GetCommandAllocator().Get(), nullptr));
 
 	BuildRootSignature();
@@ -25,9 +26,8 @@ HRESULT CRenderer::Init_Component()
 	ThrowIfFailed(m_DxDevice->GetCommandList()->Close());
 	ID3D12CommandList* cmdsLists[] = { m_DxDevice->GetCommandList().Get() };
 	m_DxDevice->GetCommandQueue()->ExecuteCommandLists(_countof(cmdsLists), cmdsLists);
+>>>>>>> parent of e7d7f92... Revert "minorupdate"
 
-	// Wait until initialization is complete.
-	m_DxDevice->FlushCommandQueue();
 	return S_OK;
 }
 
@@ -73,6 +73,9 @@ void CRenderer::Clear_RenderList()
 		m_RenderList[i].erase(erBegin, erEnd);
 		m_RenderList[i].clear();
 	}
+<<<<<<< HEAD
+}
+=======
 }
 
 void CRenderer::BuildRootSignature()
@@ -161,3 +164,4 @@ void CRenderer::BuildPSOs()
 	opaqueWireframePsoDesc.RasterizerState.FillMode = D3D12_FILL_MODE_WIREFRAME;
 	ThrowIfFailed(m_DxDevice->GetDevice()->CreateGraphicsPipelineState(&opaqueWireframePsoDesc, IID_PPV_ARGS(&m_PSOs["opaque_wf"])));
 }
+>>>>>>> parent of e7d7f92... Revert "minorupdate"

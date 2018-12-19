@@ -3,7 +3,6 @@
 #include "stdHeaders.h"
 #include "Component.h"
 #include "DxDevice.h"
-
 class CGameObject :public std::enable_shared_from_this<CGameObject>
 {
 protected:
@@ -25,17 +24,6 @@ public:
 protected:
 	virtual void Free(void);
 	shared_ptr<DxDevice> m_DxDevice;
-
-protected:
-	void BuildDescriptorHeaps();
-	void BuildConstantBuffers();
-	ComPtr<ID3D12DescriptorHeap> m_CbvHeap;
-protected:
-	ComPtr<ID3D12Resource> m_UploadBuffer;
-	BYTE* m_MappedData;
-
-	UINT m_ElementByteSize = 0;
-	void CreateUplaodBuffer();
 };
 
 

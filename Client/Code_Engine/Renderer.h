@@ -15,7 +15,7 @@ class CRenderer : public CComponent
 public:
 	enum RENDER { RENDER_PRIORITY, RENDER_NONEALPHA, RENDER_ALPHA, RENDER_UI, RENDER_DUAL, RENDER_END };
 public:
-	explicit CRenderer(const shared_ptr<DxDevice> _device);
+	explicit CRenderer(const std::shared_ptr<DxDevice> Device);
 	virtual ~CRenderer();
 public:
 	virtual HRESULT Init_Component()override;
@@ -39,8 +39,10 @@ public:
 	void Clear_RenderList();
 
 private:
-	const shared_ptr<DxDevice> m_DxDevice;
+	const std::shared_ptr<DxDevice> m_DxDevice;
 
+<<<<<<< HEAD
+=======
 private:
 	void BuildRootSignature();
 	void BuildShadersAndInputLayout();
@@ -72,5 +74,6 @@ public:
 	{
 		return m_RootSignature;
 	}
+>>>>>>> parent of e7d7f92... Revert "minorupdate"
 };
 #endif // Renderer_h__
