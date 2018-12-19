@@ -19,6 +19,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "99.Microsoft", "99.Microsof
 		Microsoft\DDSTextureLoader.h = Microsoft\DDSTextureLoader.h
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shader", "Shader", "{74742D88-2D4A-414C-BE87-A4703F2E92E9}"
+	ProjectSection(SolutionItems) = preProject
+		Client\Shaders\Box_color.hlsl = Client\Shaders\Box_color.hlsl
+		Client\Shaders\Default.hlsl = Client\Shaders\Default.hlsl
+		Client\Shaders\LightingUtil.hlsl = Client\Shaders\LightingUtil.hlsl
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64

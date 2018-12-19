@@ -3,6 +3,9 @@
 
 #include <DirectXMath.h>
 #include "MathHelper.h"
+
+#define MaxLights 16
+
 struct Vertex
 {
 	XMFLOAT3 Pos;
@@ -14,6 +17,7 @@ struct Vertex
 struct ObjectConstants
 {
 	XMFLOAT4X4 WorldViewProj = MathHelper::Identity4x4();
+	XMFLOAT4X4 TexTransform = MathHelper::Identity4x4();
 };
 
 
@@ -126,6 +130,32 @@ struct Light
 	float FalloffEnd = 10.0f;                           // point/spot light only
 	DirectX::XMFLOAT3 Position = { 0.0f, 0.0f, 0.0f };  // point/spot light only
 	float SpotPower = 64.0f;                            // spot light only
+};
+
+struct PassConstants
+{
+	XMFLOAT4X4 View = MathHelper::Identity4x4();
+	XMFLOAT4X4 InvView = MathHelper::Identity4x4();
+	XMFLOAT4X4 Proj = MathHelper::Identity4x4();
+	XMFLOAT4X4 InvProj = MathHelper::Identity4x4();
+	XMFLOAT4X4 ViewProj = MathHelper::Identity4x4();
+	XMFLOAT4X4 InvViewProj = MathHelper::Identity4x4();
+	XMFLOAT3 EyePosW = { 0.0f, 0.0f, 0.0f };
+	float cbPerObjectPad1 = 0.0f;
+	XMFLOAT2 RenderTargetSize = { 0.0f, 0.0f };
+	XMFLOAT2 InvRenderTargetSize = { 0.0f, 0.0f };
+	float NearZ = 0.0f;
+	float FarZ = 0.0f;
+	float TotalTime = 0.0f;
+	float DeltaTime = 0.0f;
+
+	XMFLOAT4 AmbientLight = { 0.0f, 0.0f, 0.0f, 1.0f };
+
+	// Indices [0, NUM_DIR_LIGHTS) are directional lights;
+	// indices [NUM_DIR_LIGHTS, NUM_DIR_LIGHTS+NUM_POINT_LIGHTS) are point lights;
+	// indices [NUM_DIR_LIGHTS+NUM_POINT_LIGHTS, NUM_DIR_LIGHTS+NUM_POINT_LIGHT+NUM_SPOT_LIGHTS)
+	// are spot lights for a maximum of MaxLights per object.
+	Light Lights[MaxLights];
 };
 
 #endif // Structs_h__

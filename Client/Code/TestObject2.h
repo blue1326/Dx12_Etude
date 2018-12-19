@@ -20,11 +20,15 @@ public:
 protected:
 	
 private:
-	
 	shared_ptr<CComponent> pBox;
 	shared_ptr<CComponent> pTransform;
 	shared_ptr<CComponent> pRenderer;
 	shared_ptr<CComponent> pCrate;
+	shared_ptr<CComponent> pMaterial;
+
+private:
+	void UpdatePassConstant(const std::shared_ptr<CTimer> t);
+	void UpdateOjbectConstant();
 private:
 	CTestObject2();
 };

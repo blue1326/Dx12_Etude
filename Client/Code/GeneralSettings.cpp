@@ -87,7 +87,7 @@ HRESULT CGeneralSettings::InitComponents()
 	woodCrate->FresnelR0 = XMFLOAT3(0.05f, 0.05f, 0.05f);
 	woodCrate->Roughness = 0.2f;
 	dynamic_cast<CMaterial*>(inst.get())->SetUpMaterialState(woodCrate);
-	dynamic_cast<CMaterial*>(inst.get())->SetUpTextureLocation(L"../../Textures/WoodCrate02.dds");
+	dynamic_cast<CMaterial*>(inst.get())->SetUpTextureLocation(L"../../Textures/WoodCrate01.dds");
 	if (FAILED(inst->Init_Component()))
 		return E_FAIL;
 	CComponentHolder::GetInstance()->AddOriginComponent("Tex_Crate", inst);

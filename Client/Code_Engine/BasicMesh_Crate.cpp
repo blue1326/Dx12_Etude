@@ -37,7 +37,7 @@ void CBasicMesh_Crate::Update_Component(const std::shared_ptr<CTimer> t)
 
 void CBasicMesh_Crate::BuildGeometry()
 {
-	MeshData box = CreateBox(1, 1, 1, 3);
+	MeshData box = CreateBox(1, 1, 1, 0);
 
 	SubmeshGeometry boxSubmesh;
 	boxSubmesh.IndexCount = (UINT)box.Indices32.size();

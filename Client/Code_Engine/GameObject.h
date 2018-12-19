@@ -30,12 +30,26 @@ protected:
 	void BuildDescriptorHeaps();
 	void BuildConstantBuffers();
 	ComPtr<ID3D12DescriptorHeap> m_CbvHeap;
-protected:
+	UINT m_DescriptorSize;
+protected://///is objconstant
 	ComPtr<ID3D12Resource> m_UploadBuffer;
 	BYTE* m_MappedData;
 
 	UINT m_ElementByteSize = 0;
-	void CreateUplaodBuffer();
+	///////////////is pass constants
+	ComPtr<ID3D12Resource> m_UploadBuffer_pass;
+	BYTE* m_MappedData_pass;
+
+	UINT m_ElementByteSize_pass = 0;
+
+
+
+	void CreateObjectConstantBuffer();
+	void CreatePassConstantBuffer();
+
+protected:
+	void Init_Start();
+	void Init_End();
 };
 
 
