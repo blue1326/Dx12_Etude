@@ -1,17 +1,17 @@
 #include "Transform.h"
 
 CTransform::CTransform(const shared_ptr<DxDevice> _device)
-	:m_DxDevice(_device)
+	:m_d3dDevice(_device)
 	,m_pParentMatrix(nullptr)
 	,m_MatWorld(XMMatrixIdentity())
 	,m_MatWorld_NonRot(XMMatrixIdentity())
 {
-	
+	m_CType = COMP_STANDALONE; ///use theres own
 	ZeroMemory(m_vInfomation, sizeof(XMVECTOR)*INFO_END);
 }
 
 CTransform::CTransform(const CTransform& rhs)
-	:m_DxDevice(rhs.m_DxDevice)
+	:m_d3dDevice(rhs.m_d3dDevice)
 	, m_pParentMatrix(rhs.m_pParentMatrix)
 	, m_MatWorld(rhs.m_MatWorld)
 	, m_MatWorld_NonRot(rhs.m_MatWorld_NonRot)
@@ -97,21 +97,6 @@ void CTransform::SetPosition(XMVECTOR vPos)
 void CTransform::SetPosition(float PosX, float PosY, float PosZ)
 {
 	m_vInfomation[INFO_POSITION] = XMVectorSet(PosX, PosY, PosZ, 1);
-}
-
-void CTransform::SetScale(XMVECTOR vScale)
-{
-	m_vInfomation[INFO_SCALE] = vScale;
-}
-
-void CTransform::SetScale(float scaleXYZ)
-{
-	m_vInfomation[INFO_SCALE] = XMVectorSet(scaleXYZ, scaleXYZ, scaleXYZ,0);
-}
-
-void CTransform::SetScale(float scaleX, float scaleY, float scaleZ)
-{
-	m_vInfomation[INFO_SCALE] = XMVectorSet(scaleX, scaleY, scaleZ, 0);
 }
 
 DirectX::XMVECTOR CTransform::GetPosition()

@@ -4,9 +4,6 @@
 #include "Component.h"
 #include "DxDevice.h"
 #include "MeshGeometry.h"
-
-#include "MathHelper.h"
-
 struct Vertex
 {
 	XMFLOAT3 Pos;
@@ -15,7 +12,7 @@ struct Vertex
 
 struct ObjectConstants
 {
-	XMFLOAT4X4 WorldViewProj = MathHelper::Identity4x4();
+	//XMFLOAT4X4 WorldViewProj = MathHelper::Identity4x4();
 };
 
 class CBox : public CComponent
@@ -30,50 +27,35 @@ public:
 	virtual void Update_Component(const std::shared_ptr<CTimer> t)override;
 
 private:
-	//void BuildDescriptorHeaps();
-	//void BuildConstantBuffers();
-
-	/*void BuildRootSignature();
-	void BuildShadersAndInputLayout();*/
+	void BuildDescriptorHeaps();
+	void BuildConstantBuffers();
+	void BuildRootSignature();
+	void BuildShadersAndInputLayout();
 	void BuildBoxGeometry();
-	//void BuildPSO();
+	void BuildPSO();
 
 private:
 	const shared_ptr<DxDevice> m_DxDevice;
-	//ComPtr<ID3D12DescriptorHeap> m_CbvHeap;
-	//ComPtr<ID3D12RootSignature> m_RootSignature;
-	//ComPtr<ID3DBlob> m_vsByteCode;
-	//ComPtr<ID3DBlob> m_psByteCode;
-	//std::vector<D3D12_INPUT_ELEMENT_DESC> m_InputLayout;
+	ComPtr<ID3D12DescriptorHeap> m_CbvHeap;
+	ComPtr<ID3D12RootSignature> m_RootSignature;
+	ComPtr<ID3DBlob> m_vsByteCode;
+	ComPtr<ID3DBlob> m_psByteCode;
+	std::vector<D3D12_INPUT_ELEMENT_DESC> m_InputLayout;
 
 	std::shared_ptr<MeshGeometry> m_BoxGeo;
-	//ComPtr<ID3D12PipelineState> m_PSO;
-
-//public:
-//	ComPtr<ID3D12PipelineState> GetPSO()
-//	{
-//		return m_PSO;
-//	}
-//private://for uploadbuffer
-//	ComPtr<ID3D12Resource> m_UploadBuffer;
-//	BYTE* m_MappedData = nullptr;
-//
-//	UINT m_ElementByteSize = 0;
-//	void CreateUplaodBuffer();
-
+	ComPtr<ID3D12PipelineState> m_PSO;
 public:
-	/*ComPtr<ID3D12DescriptorHeap> GetCBVHeap()
+	ComPtr<ID3D12PipelineState> GetPSO()
 	{
-		return m_CbvHeap;
-	}*/
-	/*ComPtr<ID3D12RootSignature> GetRootSignature()
-	{
-		return m_RootSignature;
-	}*/
-	shared_ptr<MeshGeometry> GetGeometry()
-	{
-		return m_BoxGeo;
+		return m_PSO;
 	}
+private://for uploadbuffer
+	Microsoft::WRL::ComPtr<ID3D12Resource> m_UploadBuffer;
+	BYTE* m_MappedData = nullptr;
+
+	UINT m_ElementByteSize = 0;
+	bool m_IsConstantBuffer = false;
+	void CreateUplaodBuffer();
 public:
 	virtual std::shared_ptr<CComponent> Clone()override;
 private:

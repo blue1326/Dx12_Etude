@@ -15,7 +15,7 @@ class CRenderer : public CComponent
 public:
 	enum RENDER { RENDER_PRIORITY, RENDER_NONEALPHA, RENDER_ALPHA, RENDER_UI, RENDER_DUAL, RENDER_END };
 public:
-	explicit CRenderer(const shared_ptr<DxDevice> _device);
+	explicit CRenderer(const std::shared_ptr<DxDevice> Device);
 	virtual ~CRenderer();
 public:
 	virtual HRESULT Init_Component()override;
@@ -39,29 +39,7 @@ public:
 	void Clear_RenderList();
 
 private:
-	const shared_ptr<DxDevice> m_DxDevice;
+	const std::shared_ptr<DxDevice> m_DxDevice;
 
-private:
-	void BuildRootSignature();
-	void BuildShadersAndInputLayout();
-	void BuildPSO();
-private://rootsignature
-	ComPtr<ID3D12RootSignature> m_RootSignature;
-private://shader
-	ComPtr<ID3DBlob> m_vsByteCode;
-	ComPtr<ID3DBlob> m_psByteCode;
-	std::vector<D3D12_INPUT_ELEMENT_DESC> m_InputLayout;
-private://pso
-	ComPtr<ID3D12PipelineState> m_PSO;
-
-public:
-	ComPtr<ID3D12PipelineState> GetPSO()
-	{
-		return m_PSO;
-	}
-	ComPtr<ID3D12RootSignature> GetRootSignature()
-	{
-		return m_RootSignature;
-	}
 };
 #endif // Renderer_h__
