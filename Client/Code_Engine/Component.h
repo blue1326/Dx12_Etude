@@ -17,9 +17,13 @@ public:
 	virtual std::shared_ptr<CComponent> Clone()=0;
 	virtual void OnResize();
 
+<<<<<<< HEAD
 protected:
 	COMPONENT_TYPE m_CType;
 
+=======
+	
+>>>>>>> parent of e7d7f92... Revert "minorupdate"
 
 	
 		

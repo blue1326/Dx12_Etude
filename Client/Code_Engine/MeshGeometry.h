@@ -41,6 +41,7 @@ struct MeshGeometry
 	// Use this container to define the Submesh geometries so we can draw
 	// the Submeshes individually.
 	std::unordered_map<std::string, SubmeshGeometry> DrawArgs;
+	SubmeshGeometry DrawArg;
 
 	D3D12_VERTEX_BUFFER_VIEW VertexBufferView()const
 	{
